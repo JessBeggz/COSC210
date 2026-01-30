@@ -1,5 +1,5 @@
 package model;
-//This class stores variables for an exercise, like name, sets, reps, and weight.
+//This class represents an individual exercise and stores variables for said exercise, like the name, sets, reps, and weight.
 public class Exercise {
     private String name;
     private int sets;
@@ -8,6 +8,9 @@ public class Exercise {
 
     public Exercise (String name) {
         this.name = name;
+        sets = 0;
+        reps = 0;
+        weight = 0;
     }
     public Exercise (String name, int sets, int reps, int weight) {
         this.name = name;
