@@ -30,23 +30,23 @@ public class ExerciseListTest {
 
     @Test
     public void testRemove() {
-        list.add(a);
-        assertEquals(1, list.size());
-        list.remove(a);
-        assertEquals(list.size(), 0);
+        list.add(b);
+        assertEquals(8, list.size());
+        list.remove(b);
+        assertEquals(list.size(), 7);
     }
 
     @Test
     public void testContains() {
-        list.add(a);
-        assertTrue(list.contains(a));
-        list.remove(a);
-        assertFalse(list.contains(a));
+        list.add(b);
+        assertTrue(list.contains(b));
+        list.remove(b);
+        assertFalse(list.contains(b));
     }
 
     @Test
     public void testView() {
-        list.add(a);
+        list.add(b);
         list.view();
     }
 
