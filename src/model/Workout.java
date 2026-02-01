@@ -25,9 +25,6 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<Exercise> getWorkoutExercises() {
-        return workoutExercises;
-    }
     // EFFECTS: returns an int representing the size of the list
     public int size(){
         return workoutExercises.size();
