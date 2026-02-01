@@ -25,18 +25,28 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
+    public ArrayList<Exercise> getWorkoutExercises() {
+        return workoutExercises;
+    }
+    // EFFECTS: returns an int representing the size of the list
+    public int size(){
+        return workoutExercises.size();
+    }
+    // REQUIRES: e cannot be null
+    // MODIFIES: workoutExercises
+    // EFFECTS: checks if an exercise with the same name is already in workoutExercises. Adds to workoutExercises if there is not an exercise with the same name
     public void addExercise(Exercise e) {
         int count = 0;
-        for (int i = 0; i < workoutExercises.size(); i++) {
-            if (!e.getName().equals(workoutExercises.get(i).getName()))
-                count++;
-            if (count==workoutExercises.size())
-                workoutExercises.add(e);
-        }
+            for (int i = 0; i < workoutExercises.size(); i++) {
+                if (!e.getName().equals(workoutExercises.get(i).getName()))
+                    count++;
+                if (count==workoutExercises.size())
+                    workoutExercises.add(e);
+            }
     }
     // REQUIRES: el cannot be null
-    // MODIFIES: workoutExercises
-    // EFFECTS: Prints the exercises in the ExerciseList, takes in user input for choosing an exercise as well as reps, sets, and weight, and adds to workoutExercises
+    // MODIFIES: nothing
+    // EFFECTS: prints the exercises in the ExerciseList, takes in user input for choosing an exercise as well as reps, sets, and weight, and runs the addExercise method
     public void chooseExercise() {
         System.out.println("--------------");
     for (int i = 0; i < el.getExerciseList().size(); i++) {
@@ -95,5 +105,4 @@ public class Workout {
             }
             start(workout, workoutList, exerciseList);
     }
-
 }
