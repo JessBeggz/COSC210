@@ -4,28 +4,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        startApp();
+        WorkoutList workoutList = new WorkoutList();
+        ExerciseList exerciseList = new ExerciseList();
+        startApp(workoutList, exerciseList);
     }
 
-    public static void startApp() {
+    public static void startApp(WorkoutList workoutList, ExerciseList exerciseList) {
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
         while(homePageRun) {
             System.out.println("Type '1' to begin new workout");
-            int x = scanner.nextInt();
-            if(x == 1) {
-                Workout newWorkout;
-                System.out.println("Name workout: ");
-                scanner.nextLine();
-                String workoutName = scanner.nextLine();
-                if(workoutName.length() > 0) {
-                    newWorkout = new Workout(workoutName);
-                } else {
-                    newWorkout = new Workout();
-                }
-                newWorkout.start();
+            System.out.println("Type '2' to view workout history");
+            System.out.println("Type '3' to create an exercise");
+            int userSelection = scanner.nextInt();
+
+        switch(userSelection) {
+            case 1:Workout workout = new Workout();
+                 workout.createWorkout(workout, workoutList, exerciseList);
+                 break;
+            case 2:
+            workoutList.viewWorkoutList();
+            break;
+            case 3:
+                 exerciseList.createExercise();
+                 break;
         }
         }
         scanner.close();
     }
+
 }

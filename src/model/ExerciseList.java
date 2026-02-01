@@ -2,6 +2,8 @@ package model;
 import java.util.*;
 //This class represents an Exercise List
 public class ExerciseList {
+    Scanner scanner = new Scanner(System.in);
+
     private ArrayList<Exercise> list;
     private Exercise squat = new Exercise("Squat");
     private Exercise hipThrust = new Exercise("Hip Thrust");
@@ -59,5 +61,13 @@ public class ExerciseList {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
         }
+    }
+
+    public void createExercise() {
+        System.out.println("Exercise name: ");
+        String name = scanner.nextLine();
+        Exercise exercise = new Exercise(name);
+        list.add(exercise);
+        
     }
 }
