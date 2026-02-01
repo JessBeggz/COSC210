@@ -26,7 +26,7 @@ public class Workout {
     // REQUIRES: workout, workoutList, exerciseList, userExerciseList cannot be null
     // MODIFIES: workout, workoutList, exerciseList, userExerciseList
     // EFFECTS: This is the user dashboard for creating a workout
-    public void start(Workout workout, WorkoutList workoutList, ExerciseList exerciseList, UserExerciseList userExerciseList) {
+    public void start(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
         boolean workoutRun = true;
         while(workoutRun) {
             System.out.println("Type 1 to add an exercise");
@@ -34,18 +34,6 @@ public class Workout {
             System.out.println("Type 3 to complete workout");
             int userSelection = scanner.nextInt();
             if(userSelection == 1) {
-                boolean nameSelection = true;
-                String exerciseName = "";
-                scanner.nextLine();
-                while(nameSelection) {
-                    System.out.println("New exercise name: ");
-                    exerciseName = scanner.nextLine();
-                    //CHANGE TO FOR LOOP TO ITERATE THROUGH NAMES AND CHECK
-                    if(true) {
-                        nameSelection = false;
-                    }
-                }
-                userExerciseList.createExercise(exerciseName);
                 
             } else if(userSelection == 3) {
                 workoutRun = false;
@@ -60,6 +48,15 @@ public class Workout {
     public void markComplete(Workout workout, WorkoutList workoutList) {
         System.out.println(workout.getName() + " Complete!");
         workoutList.addWorkout(workout);
+    }
+
+    public void createWorkout(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
+        System.out.println("Name workout: ");
+        String workoutName = scanner.nextLine();
+            if(workoutName.length() > 0) {
+                workout.setName(workoutName);
+            }
+            start(workout, workoutList, exerciseList);
     }
 
 }
