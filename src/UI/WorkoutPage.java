@@ -1,5 +1,6 @@
 package UI;
 
+// This class is our UI dashboard for our user when they being a workout
 import java.util.Scanner;
 import model.ExerciseList;
 import model.Workout;
@@ -14,12 +15,11 @@ public class WorkoutPage {
         boolean workoutRun = true;
         while(workoutRun) {
             System.out.println("Type '1' to choose an exercise");
-            System.out.println("Type '2' to view completed exercises");
-            System.out.println("Type '3' to complete workout");
+            System.out.println("Type '2' to complete workout");
             int userSelection = scanner.nextInt();
             if(userSelection == 1) {
                 chooseExercise(workout, exerciseList);
-            } else if(userSelection == 3) {
+            } else if(userSelection == 2) {
                 workoutRun = false;
                 markComplete(workout, workoutList);
             }
@@ -52,12 +52,10 @@ public class WorkoutPage {
     // MODIFIES:
     // EFFECTS: view current WorkoutList
     public void viewWorkoutList(WorkoutList workoutList) {
-        // for(Workout workout : workoutList.getWorkoutList()) {
-        //     System.out.println(workout.getName());
-        //     System.out.println("----" + workout.getWorkoutExercises();
-            
-        // }
-        for(Workout workout : workoutList.getWorkoutList()) {
+        if(workoutList.size() == 0) {
+            System.out.println("No Workout History.");
+        } else {
+            for(Workout workout : workoutList.getWorkoutList()) {
             System.out.println(workout.getName() + ": ");
             for(int i=0; i < workout.getWorkoutExercises().size(); i++) {
                 System.out.println("- Exercise: " + workout.getWorkoutExercises().get(i).getName());
@@ -66,6 +64,7 @@ public class WorkoutPage {
                 System.out.println("-- Weight: " + workout.getWorkoutExercises().get(i).getWeight());
                 System.out.println();
 
+        }
         }
         }
        

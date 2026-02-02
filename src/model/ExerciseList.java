@@ -59,14 +59,7 @@ public class ExerciseList {
     public int size(){
         return list.size();
     }
-
-    //REMOVE??
     
-    // // EFFECTS: prints the names of the exercises in the list in the terminal
-    // public void view(){
-    //     for (int i = 0; i < list.size(); i++) {
-    //         System.out.println(list.get(i).getName());
-    //     }
-    // }
+
 
 }

@@ -1,7 +1,7 @@
 package model;
 import java.util.*;
 
-// This class creates a new workout with a unique name
+// This class creates a new workout for the user to add exercises too
 public class Workout {
     Scanner scanner = new Scanner(System.in);
 
@@ -35,19 +35,11 @@ public class Workout {
     public int size(){
         return workoutExercises.size();
     }
+
     // REQUIRES: e cannot be null
     // MODIFIES: workoutExercises
     // EFFECTS: checks if an exercise with the same name is already in workoutExercises. Adds to workoutExercises if there is not an exercise with the same name
     public void addExercise(Exercise e) {
-        // int count = 0;
-        //     for (int i = 0; i < workoutExercises.size(); i++) {
-        //         if (!e.getName().equals(workoutExercises.get(i).getName()))
-        //             count++;
-        //         if (count==workoutExercises.size())
-        //             workoutExercises.add(e);
-        //     }
-        
-
         for(Exercise exercise : workoutExercises) {
             if(e.getName().equals(exercise.getName())) {
                 return;
