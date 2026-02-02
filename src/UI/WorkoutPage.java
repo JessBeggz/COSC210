@@ -27,7 +27,6 @@ public class WorkoutPage {
     
     }
 
-
     //Requires: workout, workoutList, exerciseList
     //Modifies: workout
     //Effects: Name your workout and be sent to workout dashboard (i.e. start())
@@ -67,10 +66,9 @@ public class WorkoutPage {
         }
         }
         }
-       
     }
 
-     // REQUIRES: workout and exerciseList cannot be null
+    // REQUIRES: workout and exerciseList cannot be null
     // MODIFIES: nothing
     // EFFECTS: prints the exercises in the ExerciseList, takes in user input for choosing an exercise as well as reps, sets, and weight, and runs the addExercise method
     public void chooseExercise(Workout workout, ExerciseList exerciseList) {
@@ -94,6 +92,5 @@ public class WorkoutPage {
         scanner.nextLine();
         exerciseList.getExerciseList().get(num-1).setWeight(weight);
         workout.addExercise(exerciseList.getExerciseList().get(num-1));
-        System.out.println(name + " added to workout.");
     }
 }

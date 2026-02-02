@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class WorkoutList {
     
     private ArrayList<Workout> workoutList;
-                      
+
     public WorkoutList() {
         workoutList = new ArrayList<>();
     }
@@ -29,7 +29,4 @@ public class WorkoutList {
     public boolean contains(Workout workout) {
         return workoutList.contains(workout);
     }
-
-
-    
 }

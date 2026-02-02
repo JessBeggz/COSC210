@@ -1,6 +1,6 @@
 package model;
 import java.util.*;
-//This class represents an Exercise List
+//This class represents a list of exercise objects
 public class ExerciseList {
     Scanner scanner = new Scanner(System.in);
 
@@ -24,6 +24,7 @@ public class ExerciseList {
         list.add(latPulldown);
     }
 
+    // EFFECTS: returns the ExerciseList
     public ArrayList<Exercise> getExerciseList() {
         return list;
     }
@@ -59,7 +60,4 @@ public class ExerciseList {
     public int size(){
         return list.size();
     }
-    
-
-
 }

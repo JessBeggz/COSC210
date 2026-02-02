@@ -7,8 +7,8 @@ import model.WorkoutList;
 
 public class HomePage {
     public static void startApp(WorkoutList workoutList, ExerciseList exerciseList) {
-         WorkoutPage workoutPage = new WorkoutPage();
-         ExerciseManager exerciseManager = new ExerciseManager();
+        WorkoutPage workoutPage = new WorkoutPage();
+        ExerciseManager exerciseManager = new ExerciseManager();
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
         while(homePageRun) {
@@ -16,20 +16,15 @@ public class HomePage {
             System.out.println("Type '2' to view workout history");
             System.out.println("Type '3' to create an exercise");
             System.out.println("Type '4' to view Exercise List");
+            System.out.println("Type '5' to exit");
             int userSelection = scanner.nextInt();
 
         switch(userSelection) {
-            case 1:Workout workout = new Workout();
-                 workoutPage.createWorkout(workout, workoutList, exerciseList);
-                 break;
-            case 2:
-            workoutPage.viewWorkoutList(workoutList);
-            break;
-            case 3:
-                 exerciseManager.createExercise(exerciseList);
-                 break;
-            case 4:
-                exerciseManager.view(exerciseList);
+            case 1:Workout workout = new Workout(); workoutPage.createWorkout(workout, workoutList, exerciseList); break;
+            case 2: workoutPage.viewWorkoutList(workoutList); break;
+            case 3: exerciseManager.createExercise(exerciseList); break;
+            case 4: exerciseManager.view(exerciseList); break;
+            case 5: homePageRun = false;
         }
         }
         scanner.close();

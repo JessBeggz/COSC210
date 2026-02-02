@@ -1,12 +1,9 @@
 package test;
 import model.Exercise;
-import model.ExerciseList;
 import model.Workout;
-import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class WorkoutTest {
