@@ -25,7 +25,6 @@ public class ExerciseListTest {
         assertEquals(7, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
         list.add(b);
         assertEquals(8, list.size()); //Should change to 8 cause no exercise with the name Jump already exists in the list
-        
     }
 
     @Test

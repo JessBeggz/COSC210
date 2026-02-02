@@ -24,6 +24,10 @@ public class ExerciseList {
         list.add(latPulldown);
     }
 
+    public ArrayList<Exercise> getExerciseList() {
+        return list;
+    }
+
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: If the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
@@ -56,7 +60,7 @@ public class ExerciseList {
         return list.size();
     }
 
-    // EFFECTS: Prints the names of the exercises in the list
+    // EFFECTS: prints the names of the exercises in the list in the terminal
     public void view(){
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
@@ -68,6 +72,5 @@ public class ExerciseList {
         String name = scanner.nextLine();
         Exercise exercise = new Exercise(name);
         list.add(exercise);
-        
     }
 }
