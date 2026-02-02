@@ -21,5 +21,14 @@ public class WorkoutList {
         return workoutList;
     }
 
+    public int size() {
+        return workoutList.size();
+    }
+
+    public boolean contains(Workout workout) {
+        return workoutList.contains(workout);
+    }
+
+
     
 }
