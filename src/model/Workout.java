@@ -25,6 +25,8 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
+    // REQUIRES: workout, workoutList, exerciseList  cannot be null
+    // MODIFIES: workout, workoutList, exerciseList
     public ArrayList<Exercise> getWorkoutExercises() {
         return workoutExercises;
     }
@@ -97,6 +99,9 @@ public class Workout {
         workoutList.addWorkout(workout);
     }
 
+    //Requires: workout, workoutList, exerciseList
+    //Modifies: workout
+    //Effects: Name your workout and be sent to workout dashboard (i.e. start())
     public void createWorkout(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
         System.out.println("Name workout: ");
         String workoutName = scanner.nextLine();
