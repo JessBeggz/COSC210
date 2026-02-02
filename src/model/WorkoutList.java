@@ -1,5 +1,6 @@
 package model;
 
+//This class represents an ArrayList of all the users completed workouts.
 import java.util.ArrayList;
 
 public class WorkoutList {
