@@ -29,6 +29,13 @@ public class ExerciseList {
         return list;
     }
 
+    //Requires: e cannot be null
+    //Modifies: this
+    //Effects: sets this ExerciseList to e
+    public void setExerciseList(ArrayList<Exercise> e) {
+        this.list = e;
+    }
+
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: If the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list

@@ -1,5 +1,6 @@
 package UI;
 // This class is the UI for our home dashboard of our workout app.
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.ExerciseList;
 import model.Workout;
@@ -17,15 +18,26 @@ public class HomePage {
             System.out.println("Type '3' to create an exercise");
             System.out.println("Type '4' to view Exercise List");
             System.out.println("Type '5' to exit");
-            int userSelection = scanner.nextInt();
-
-        switch(userSelection) {
-            case 1:Workout workout = new Workout(); workoutPage.createWorkout(workout, workoutList, exerciseList); break;
+            int userSelection;
+            boolean validChoice = false;
+            while(!validChoice) {
+                try {
+            userSelection = scanner.nextInt();
+            switch(userSelection) {
+            case 1: Workout workout = new Workout(); workoutPage.createWorkout(workout, workoutList, exerciseList); break;
             case 2: workoutPage.viewWorkoutList(workoutList); break;
             case 3: exerciseManager.createExercise(exerciseList); break;
             case 4: exerciseManager.view(exerciseList); break;
             case 5: homePageRun = false;
-        }
+            }
+            validChoice = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid integer (1-5)");
+                scanner.nextLine();
+            }
+            }
+            
+        
         }
         scanner.close();
     }
