@@ -60,17 +60,13 @@ public class ExerciseList {
         return list.size();
     }
 
-    // EFFECTS: prints the names of the exercises in the list in the terminal
-    public void view(){
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getName());
-        }
-    }
+    //REMOVE??
+    
+    // // EFFECTS: prints the names of the exercises in the list in the terminal
+    // public void view(){
+    //     for (int i = 0; i < list.size(); i++) {
+    //         System.out.println(list.get(i).getName());
+    //     }
+    // }
 
-    public void createExercise() {
-        System.out.println("Exercise name: ");
-        String name = scanner.nextLine();
-        Exercise exercise = new Exercise(name);
-        list.add(exercise);
-    }
 }

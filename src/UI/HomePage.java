@@ -7,6 +7,8 @@ import model.WorkoutList;
 
 public class HomePage {
     public static void startApp(WorkoutList workoutList, ExerciseList exerciseList) {
+         WorkoutPage workoutPage = new WorkoutPage();
+         ExerciseManager exerciseManager = new ExerciseManager();
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
         while(homePageRun) {
@@ -17,13 +19,13 @@ public class HomePage {
 
         switch(userSelection) {
             case 1:Workout workout = new Workout();
-                 workout.createWorkout(workout, workoutList, exerciseList);
+                 workoutPage.createWorkout(workout, workoutList, exerciseList);
                  break;
             case 2:
-            workoutList.viewWorkoutList();
+            workoutPage.viewWorkoutList(workoutList);
             break;
             case 3:
-                 exerciseList.createExercise();
+                 exerciseManager.createExercise(exerciseList);
                  break;
         }
         }

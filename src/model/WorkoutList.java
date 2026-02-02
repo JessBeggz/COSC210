@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class WorkoutList {
     
     private ArrayList<Workout> workoutList;
-
+                      
     public WorkoutList() {
         workoutList = new ArrayList<>();
     }
@@ -17,12 +17,18 @@ public class WorkoutList {
         workoutList.add(workout);
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS: view current WorkoutList
-    public void viewWorkoutList() {
-        for(Workout workout : workoutList) {
-            System.out.println(workout.getName());
-        }
+    public ArrayList<Workout> getWorkoutList() {
+        return workoutList;
     }
+
+    public int size() {
+        return workoutList.size();
+    }
+
+    public boolean contains(Workout workout) {
+        return workoutList.contains(workout);
+    }
+
+
+    
 }

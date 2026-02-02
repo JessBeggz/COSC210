@@ -43,10 +43,10 @@ public class ExerciseListTest {
         assertFalse(list.contains(b));
     }
 
-    @Test
-    public void testView() {
-        list.add(b);
-        list.view();
-    }
+    // @Test
+    // public void testView() {
+    //     list.add(b);
+    //     list.view();
+    // }
 
 }
