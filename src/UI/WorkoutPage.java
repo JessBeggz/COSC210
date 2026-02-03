@@ -12,8 +12,8 @@ public class WorkoutPage {
 
     Scanner scanner = new Scanner(System.in);
 
-    // REQUIRES: workout, workoutList, exerciseList cannot be null
-    // MODIFIES: workout, workoutList, exerciseList
+    // REQUIRES: workout, workoutList and exerciseList cannot be null
+    // MODIFIES: workout, workoutList and exerciseList
     // EFFECTS: This is the user dashboard for creating a workout
     public void start(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
         boolean workoutRun = true;
@@ -46,9 +46,9 @@ public class WorkoutPage {
 
     }
 
-    //Requires: workout, workoutList, exerciseList can't be null
-    //Modifies: workout
-    //Effects: Name your workout and be sent to workout dashboard (i.e. start())
+    //REQUIRES: workout, workoutList and exerciseList can't be null
+    //MODIFIES: workout
+    //EFFECTS: Name your workout and be sent to workout dashboard (i.e. start())
     public void createWorkout(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
         System.out.println("Name workout: ");
         String workoutName = scanner.nextLine();
@@ -58,17 +58,16 @@ public class WorkoutPage {
         start(workout, workoutList, exerciseList);
     }
 
-    //Requires: workout, workoutList cannot be null
-    //Modifies: workoutList
-    //Effects: Add current workout to workoutList, exit workout and go back to home dashboard
+    //REQUIRES: workout, workoutList cannot be null
+    //MODIFIES: workoutList
+    //EFFECTS: Add current workout to workoutList, exit workout and go back to home dashboard
     public void markComplete(Workout workout, WorkoutList workoutList) {
         System.out.println(workout.getName() + " Complete!");
         workoutList.addWorkout(workout);
     }
 
     // REQUIRES: workoutList can't be null
-    // MODIFIES:
-    // EFFECTS: view current WorkoutList
+    // EFFECTS: prints the contents of workoutlist in the terminal
     public void viewWorkoutList(WorkoutList workoutList) {
         if (workoutList.size() == 0) {
             System.out.println("No Workout History.");

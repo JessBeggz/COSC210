@@ -24,21 +24,21 @@ public class ExerciseList {
         list.add(latPulldown);
     }
 
-    // EFFECTS: returns the ExerciseList
+    // EFFECTS: returns the list within ExerciseList object
     public ArrayList<Exercise> getExerciseList() {
         return list;
     }
 
-    //Requires: e cannot be null
-    //Modifies: this
-    //Effects: sets this ExerciseList to e
+    // REQUIRES: e cannot be null
+    // MODIFIES: this
+    // EFFECTS: sets this ExerciseList to e
     public void setExerciseList(ArrayList<Exercise> e) {
         this.list = e;
     }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
-    // EFFECTS: If the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
+    // EFFECTS: if the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
     public void add(Exercise e) {
         int count = 0;
         for (int i = 0; i < list.size(); i++) {
@@ -51,7 +51,7 @@ public class ExerciseList {
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
-    // EFFECTS: If the list contains the exercise that is wanted to be removed, then remove the exercise from the list
+    // EFFECTS: if the list contains the exercise that is wanted to be removed, then remove the exercise from the list
     public void remove(Exercise e) {
         if (list.contains(e))
             list.remove(e);

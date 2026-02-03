@@ -26,8 +26,8 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
-    // REQUIRES: workout, workoutList, exerciseList  cannot be null
-    // MODIFIES: workout, workoutList, exerciseList
+    // REQUIRES: this, workoutList, exerciseList  cannot be null
+    // MODIFIES: this, workoutList, exerciseList
     public ArrayList<Exercise> getWorkoutExercises() {
         return workoutExercises;
     }

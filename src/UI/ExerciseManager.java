@@ -10,7 +10,7 @@ public class ExerciseManager {
 
     // REQUIRES: exerciseList cannot be null
     // MODIFIES: exerciseList
-    // EFFECTS: takes user inputted name and adds to the list of available exercises
+    // EFFECTS: takes user input to create exercise name and adds to the list of available exercises if the exercise name doesn't already exist
     public void createExercise(ExerciseList exerciseList) {
         System.out.println("Exercise name: ");
         String name = scanner.nextLine();
