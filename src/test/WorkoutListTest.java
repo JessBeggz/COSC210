@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WorkoutListTest {
 
     private WorkoutList workoutList;
+    private WorkoutList workoutList2;
     private Workout workout1;
     private Workout workout2;
     @BeforeEach
     public void setUp() {
         workoutList = new WorkoutList();
+        workoutList2 = new WorkoutList();
         workout1 = new Workout("Upper");
         workout2 = new Workout("Lower");
     }
@@ -31,4 +33,5 @@ public class WorkoutListTest {
         workoutList.addWorkout(workout2);
         assertEquals(2, workoutList.getWorkoutList().size());
     }
+
 }

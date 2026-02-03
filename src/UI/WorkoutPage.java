@@ -1,5 +1,6 @@
 package UI;
 // This class represents the home dashboard UI for the user when they begin a workout
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.Exercise;
@@ -11,8 +12,8 @@ public class WorkoutPage {
 
     Scanner scanner = new Scanner(System.in);
 
-    // REQUIRES: workout, workoutList, exerciseList, userExerciseList cannot be null
-    // MODIFIES: workout, workoutList, exerciseList, userExerciseList
+    // REQUIRES: workout, workoutList, exerciseList cannot be null
+    // MODIFIES: workout, workoutList, exerciseList
     // EFFECTS: This is the user dashboard for creating a workout
     public void start(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
         boolean workoutRun = true;
@@ -45,7 +46,7 @@ public class WorkoutPage {
 
     }
 
-    //Requires: workout, workoutList, exerciseList
+    //Requires: workout, workoutList, exerciseList can't be null
     //Modifies: workout
     //Effects: Name your workout and be sent to workout dashboard (i.e. start())
     public void createWorkout(Workout workout, WorkoutList workoutList, ExerciseList exerciseList) {
@@ -65,7 +66,7 @@ public class WorkoutPage {
         workoutList.addWorkout(workout);
     }
 
-    // REQUIRES:
+    // REQUIRES: workoutList can't be null
     // MODIFIES:
     // EFFECTS: view current WorkoutList
     public void viewWorkoutList(WorkoutList workoutList) {
@@ -91,41 +92,32 @@ public class WorkoutPage {
     // EFFECTS: prints the exercises in the ExerciseList, takes in user input for choosing an exercise as well as reps, sets, and weight, and runs the addExercise method
     public void chooseExercise(Workout workout, ExerciseList exerciseList) {
         ExerciseList el = new ExerciseList();
-        for(Exercise exercise : exerciseList.getExerciseList()) {
+        for (Exercise exercise : exerciseList.getExerciseList()) {
             el.add(new Exercise(exercise.getName(), exercise.getSets(), exercise.getReps(), exercise.getWeight()));
         }
         boolean validInt = false;
-        int num = 0;
-        int sets = 0;
-        int reps = 0;
-        int weight = 0;
+        int num = 0, sets = 0, reps = 0, weight = 0;
         while (!validInt) {
             try {
-                System.out.println("--------------");
                 for (int i = 0; i < el.getExerciseList().size(); i++) {
                     System.out.println((i + 1) + ". " + el.getExerciseList().get(i).getName());
                 }
-                System.out.println("--------------");
                 System.out.println("Please enter the number of the exercise that you wish to add: ");
                 num = scanner.nextInt();
                 String name = el.getExerciseList().get(num - 1).getName();
-                System.out.println("You chose: " + name);
-                System.out.println("Please enter the number of sets that you wish to add to " + name + ": ");
+                System.out.println("You chose: " + name + ". Please enter number of sets, reps and weight you wish to add (Ex. '3 10 100'): ");
                 sets = scanner.nextInt();
-                el.getExerciseList().get(num - 1).setSets(sets);
-                System.out.println("Please enter the number of reps that you wish to add to " + name + ": ");
                 reps = scanner.nextInt();
-                el.getExerciseList().get(num - 1).setReps(reps);
-                System.out.println("Please enter the weight (lbs) that you wish to add to " + name + ": ");
                 weight = scanner.nextInt();
                 scanner.nextLine();
                 validInt = true;
-
             } catch (Exception e) {
                 System.out.println("Please enter valid a integer");
                 scanner.nextLine();
             }
         }
+        el.getExerciseList().get(num - 1).setSets(sets);
+        el.getExerciseList().get(num - 1).setReps(reps);
         el.getExerciseList().get(num - 1).setWeight(weight);
         workout.addExercise(el.getExerciseList().get(num - 1));
     }

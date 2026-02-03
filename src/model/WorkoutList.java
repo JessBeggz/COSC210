@@ -18,6 +18,7 @@ public class WorkoutList {
         workoutList.add(workout);
     }
 
+    //EFFECTS: returns the WorkoutList
     public ArrayList<Workout> getWorkoutList() {
         return workoutList;
     }
