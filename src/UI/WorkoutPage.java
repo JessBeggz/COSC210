@@ -99,9 +99,7 @@ public class WorkoutPage {
         int num = 0, sets = 0, reps = 0, weight = 0;
         while (!validInt) {
             try {
-                for (int i = 0; i < el.getExerciseList().size(); i++) {
-                    System.out.println((i + 1) + ". " + el.getExerciseList().get(i).getName());
-                }
+                ExerciseManager.view(el);
                 System.out.println("Please enter the number of the exercise that you wish to add: ");
                 num = scanner.nextInt();
                 String name = el.getExerciseList().get(num - 1).getName();
