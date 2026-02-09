@@ -109,7 +109,7 @@ public class WorkoutPage {
                 scanner.nextLine();
                 validInt = true;
             } catch (Exception e) {
-                System.out.println("Please enter valid a integer");
+                System.out.println("Please enter a valid integer");
                 scanner.nextLine();
             }
         }

@@ -1,9 +1,10 @@
 package model;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 //This class represents a list of exercise objects
-public class ExerciseList implements Saveable{
+public class ExerciseList implements Saveable, Loadable{
     Scanner scanner = new Scanner(System.in);
 
     private ArrayList<Exercise> list;
@@ -42,14 +43,18 @@ public class ExerciseList implements Saveable{
     // MODIFIES: this
     // EFFECTS: if the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
     public void add(Exercise e) {
-        int count = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (!e.getName().equals(list.get(i).getName()))
-                count++;
-            if (count==list.size())
-                list.add(e);
+        boolean exists = false;
+
+        for (Exercise exercise : list) {
+            if (e.getName().equals(exercise.getName())){
+                exists = true;
+                break;
+            }
         }
-    }
+        if (!exists) {
+            list.add(e);
+        }
+        }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
@@ -75,11 +80,29 @@ public class ExerciseList implements Saveable{
         FileWriter file;
         try {
             file = new FileWriter("ExerciseListSave.txt");
+
             for(Exercise myList : list) {
                 file.write(myList.getName() + "\n");
             }
             file.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void load() {
+        File file;
+        try {
+            file = new File("ExerciseListSave.txt");
+            Scanner in = new Scanner(file);
+
+            while(in.hasNext()) {
+                String exerciseName = in.nextLine();
+                Exercise exercise = new Exercise(exerciseName);
+                add(exercise);
+            }
+            in.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
