@@ -10,6 +10,8 @@ public class HomePage {
     public static void startApp(WorkoutList workoutList, ExerciseList exerciseList) {
         WorkoutPage workoutPage = new WorkoutPage();
         ExerciseManager exerciseManager = new ExerciseManager();
+        exerciseList.load();
+        workoutList.load();
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
         while(homePageRun) {
