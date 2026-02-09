@@ -1,0 +1,14 @@
+Workout1
+john
+10
+10
+10
+Hip Thrust
+10
+3
+100
+Workout2
+Bicep Curls
+5
+5
+5

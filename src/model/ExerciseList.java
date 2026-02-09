@@ -1,7 +1,9 @@
 package model;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 //This class represents a list of exercise objects
-public class ExerciseList {
+public class ExerciseList implements Saveable{
     Scanner scanner = new Scanner(System.in);
 
     private ArrayList<Exercise> list;
@@ -66,5 +68,19 @@ public class ExerciseList {
     // EFFECTS: returns an int representing the size of the list
     public int size(){
         return list.size();
+    }
+
+    @Override
+    public void save() {
+        FileWriter file;
+        try {
+            file = new FileWriter("ExerciseListSave.txt");
+            for(Exercise myList : list) {
+                file.write(myList.getName() + "\n");
+            }
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

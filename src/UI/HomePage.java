@@ -28,7 +28,7 @@ public class HomePage {
             case 2: workoutPage.viewWorkoutList(workoutList); break;
             case 3: exerciseManager.createExercise(exerciseList); break;
             case 4: exerciseManager.view(exerciseList); break;
-            case 5: homePageRun = false;
+            case 5: exerciseList.save(); workoutList.save(); homePageRun = false;
             }
             validChoice = true;
             } catch (InputMismatchException e) {
