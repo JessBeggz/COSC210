@@ -44,6 +44,7 @@ public class WorkoutList implements Saveable{
                 file.write(workout.getWorkoutExercises().get(i).getReps() + "\n");
                 file.write(workout.getWorkoutExercises().get(i).getSets() + "\n");
                 file.write(workout.getWorkoutExercises().get(i).getWeight() + "\n");
+                file.write("\n");
             }
             }            
             file.close();
