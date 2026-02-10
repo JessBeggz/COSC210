@@ -12,6 +12,7 @@ public class HomePage {
         ExerciseManager exerciseManager = new ExerciseManager();
         exerciseList.load();
         workoutList.load();
+       
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
         while(homePageRun) {

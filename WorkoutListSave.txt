@@ -1,6 +1,24 @@
-Jess
-Leg Press
+Workout1
+Squat
 10
-3
-100
-
+10
+10
+Bench Press
+30
+30
+30
+Bicep Curls
+50
+50
+50
+end 
+workout2
+Leg Press
+40
+40
+40
+John Jumps
+10
+10
+10
+end 
