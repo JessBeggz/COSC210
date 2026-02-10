@@ -33,8 +33,8 @@ public class SaveableTest {
         FileReader file;
         String s = "";
         try {
-         file = new FileReader("ExerciseListSave.txt");
-         Scanner scanner = new Scanner(file);
+        file = new FileReader("ExerciseListSave.txt");
+        Scanner scanner = new Scanner(file);
             s = scanner.nextLine();
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
@@ -49,8 +49,8 @@ public class SaveableTest {
         FileReader file;
         String s = "";
         try {
-         file = new FileReader("WorkoutListSave.txt");
-         Scanner scanner = new Scanner(file);
+        file = new FileReader("WorkoutListSave.txt");
+        Scanner scanner = new Scanner(file);
             s = scanner.nextLine();
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
