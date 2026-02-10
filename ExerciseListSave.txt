@@ -5,3 +5,8 @@ Leg Press
 Bicep Curls
 Leg Curls
 Lat Pulldown
+<<<<<<< HEAD
+=======
+Jumping Jacks
+John Jumps
+>>>>>>> a147035c592275590e666262800912ed11b0450b

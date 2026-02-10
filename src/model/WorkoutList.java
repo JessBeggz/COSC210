@@ -47,10 +47,11 @@ public class WorkoutList implements Saveable, Loadable{
                 file.write(workout.getWorkoutExercises().get(i).getReps() + "\n");
                 file.write(workout.getWorkoutExercises().get(i).getSets() + "\n");
                 file.write(workout.getWorkoutExercises().get(i).getWeight() + "\n");
-                file.write("\n");
+                
             }
+            file.write("end \n");
             }
-            file.close();
+           file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,15 +62,15 @@ public class WorkoutList implements Saveable, Loadable{
         try {
             file = new File("WorkoutListSave.txt");
             Scanner in = new Scanner(file);
-            
             while(in.hasNextLine()) {
                 String workoutName = in.nextLine();
                 Workout workout = new Workout(workoutName);
-                if (!in.nextLine().equals("")) {
-                    String exerciseName = in.nextLine();
-                    int exerciseReps = in.nextInt();
-                    int exerciseSets = in.nextInt();
-                    int exerciseWeight = in.nextInt();
+                String checkLine;
+                while (!(checkLine = in.nextLine()).equals("end ")) {
+                    String exerciseName = checkLine;
+                    int exerciseReps = Integer.parseInt(in.nextLine());
+                    int exerciseSets = Integer.parseInt(in.nextLine());
+                    int exerciseWeight = Integer.parseInt(in.nextLine());
                     Exercise exercise = new Exercise(exerciseName, exerciseReps, exerciseSets, exerciseWeight);
                     workout.addExercise(exercise);
                 }
