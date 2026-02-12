@@ -47,6 +47,5 @@ public class Workout {
             }
         }
         workoutExercises.add(e);
-        // System.out.println(e.getName() + " added to workout.");
     }
 }
