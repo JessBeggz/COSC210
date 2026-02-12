@@ -11,14 +11,10 @@ Bicep Curls
 50
 50
 50
-end 
+end
 workout2
 Leg Press
 40
 40
 40
-John Jumps
-10
-10
-10
-end 
+end

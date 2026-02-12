@@ -51,7 +51,7 @@ public class WorkoutList implements Saveable, Loadable{
             }
             file.write("end \n");
             }
-           file.close();
+        file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
