@@ -1,13 +1,8 @@
 package model;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class WorkoutList implements Saveable, Loadable {
 
@@ -42,35 +37,35 @@ public class WorkoutList implements Saveable, Loadable {
     //EFFECTS: Converts and saves workoutlist to json
     @Override
     public void save() {
-        JSONObject root = new JSONObject();
-        JSONArray saveArray = new JSONArray();
-        FileWriter file;
-        for (Workout workout : workoutList) {
-            JSONObject exercises = new JSONObject();
-            JSONArray exercisesArray = new JSONArray();
-            for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
-                JSONObject workouts = new JSONObject();
-                workouts.put("name", workout.getWorkoutExercises().get(i).getName());
-                workouts.put("reps", workout.getWorkoutExercises().get(i).getReps());
-                workouts.put("sets", workout.getWorkoutExercises().get(i).getSets());
-                workouts.put("weight", workout.getWorkoutExercises().get(i).getWeight());
-                exercisesArray.put(workouts);
-            }
-            exercises.put("title", workout.getName());
-            exercises.put("exercises", exercisesArray);
-            saveArray.put(exercises);
-        }
-        root.put("workoutList", saveArray);
-        try {
-            System.out.println(root.toString(2)); //FOR EXAMPLE
-            file = new FileWriter("./data/workoutListData.json");
-            file.write(root.toString());
-            file.close();
-            System.out.println("Saved WorkoutList!");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // JSONObject root = new JSONObject();
+        // JSONArray saveArray = new JSONArray();
+        // FileWriter file;
+        // for (Workout workout : workoutList) {
+        //     JSONObject exercises = new JSONObject();
+        //     JSONArray exercisesArray = new JSONArray();
+        //     for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
+        //         JSONObject workouts = new JSONObject();
+        //         workouts.put("name", workout.getWorkoutExercises().get(i).getName());
+        //         workouts.put("reps", workout.getWorkoutExercises().get(i).getReps());
+        //         workouts.put("sets", workout.getWorkoutExercises().get(i).getSets());
+        //         workouts.put("weight", workout.getWorkoutExercises().get(i).getWeight());
+        //         exercisesArray.put(workouts);
+        //     }
+        //     exercises.put("title", workout.getName());
+        //     exercises.put("exercises", exercisesArray);
+        //     saveArray.put(exercises);
+        // }
+        // root.put("workoutList", saveArray);
+        // try {
+        //     System.out.println(root.toString(2)); //FOR EXAMPLE
+        //     file = new FileWriter("./data/workoutListData.json");
+        //     file.write(root.toString());
+        //     file.close();
+        //     System.out.println("Saved WorkoutList!");
+        // } catch (IOException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
 
         // FileWriter file;
         // try {
