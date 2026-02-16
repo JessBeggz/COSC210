@@ -1,4 +1,5 @@
 package model;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +9,9 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 //This class represents a list of exercise objects
-public class ExerciseList implements Saveable, Loadable{
+
+public class ExerciseList implements Saveable, Loadable {
+
     Scanner scanner = new Scanner(System.in);
 
     private ArrayList<Exercise> list;
@@ -50,7 +53,7 @@ public class ExerciseList implements Saveable, Loadable{
         boolean exists = false;
 
         for (Exercise exercise : list) {
-            if (e.getName().equals(exercise.getName())){
+            if (e.getName().equals(exercise.getName())) {
                 exists = true;
                 break;
             }
@@ -58,14 +61,15 @@ public class ExerciseList implements Saveable, Loadable{
         if (!exists) {
             list.add(e);
         }
-        }
+    }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: if the list contains the exercise that is wanted to be removed, then remove the exercise from the list
     public void remove(Exercise e) {
-        if (list.contains(e))
+        if (list.contains(e)) {
             list.remove(e);
+        }
     }
 
     // REQUIRES: e cannot be null
@@ -75,27 +79,27 @@ public class ExerciseList implements Saveable, Loadable{
     }
 
     // EFFECTS: returns an int representing the size of the list
-    public int size(){
+    public int size() {
         return list.size();
     }
 
-    
     @Override
     public void save() {
         JSONObject root = new JSONObject();
         JSONArray saveArray = new JSONArray();
         FileWriter file;
-        for(Exercise exercise : list) {
+        for (Exercise exercise : list) {
             JSONObject exerciseName = new JSONObject();
             exerciseName.put("name", exercise.getName());
             saveArray.put(exerciseName);
         }
         root.put("exerciseList", saveArray);
         try {
-         file = new FileWriter("./data/exerciseListData.json");
-         file.write(root.toString());
-         file.close();
-         System.out.println("Saved ExerciseList!");
+            System.out.println(root.toString(2)); // FOR EXAMPLE
+            file = new FileWriter("./data/exerciseListData.json");
+            file.write(root.toString());
+            file.close();
+            System.out.println("Saved ExerciseList!");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -104,7 +108,6 @@ public class ExerciseList implements Saveable, Loadable{
         // FileWriter file;
         // try {
         //     file = new FileWriter("ExerciseListSave.txt");
-
         //     for(Exercise myList : list) {
         //         file.write(myList.getName() + "\n");
         //     }
@@ -113,6 +116,7 @@ public class ExerciseList implements Saveable, Loadable{
         //     e.printStackTrace();
         // }
     }
+
     @Override
     public void load() {
         File file;
@@ -120,7 +124,7 @@ public class ExerciseList implements Saveable, Loadable{
             file = new File("ExerciseListSave.txt");
             Scanner in = new Scanner(file);
 
-            while(in.hasNext()) {
+            while (in.hasNext()) {
                 String exerciseName = in.nextLine();
                 Exercise exercise = new Exercise(exerciseName);
                 add(exercise);

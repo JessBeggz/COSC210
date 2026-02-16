@@ -9,8 +9,8 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class WorkoutList implements Saveable, Loadable{
-    
+public class WorkoutList implements Saveable, Loadable {
+
     private ArrayList<Workout> workoutList;
 
     public WorkoutList() {
@@ -37,20 +37,23 @@ public class WorkoutList implements Saveable, Loadable{
         return workoutList.contains(workout);
     }
 
+    //REQUIRES: workoutList can't be null
+    //MODIFES: workoutListData.json
+    //EFFECTS: Converts and saves workoutlist to json
     @Override
     public void save() {
         JSONObject root = new JSONObject();
         JSONArray saveArray = new JSONArray();
         FileWriter file;
-        for(Workout workout : workoutList) {
+        for (Workout workout : workoutList) {
             JSONObject exercises = new JSONObject();
             JSONArray exercisesArray = new JSONArray();
-            for(int i=0; i < workout.getWorkoutExercises().size(); i++) {
+            for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
                 JSONObject workouts = new JSONObject();
-                workouts.put("name" ,workout.getWorkoutExercises().get(i).getName());
-                workouts.put("reps" ,workout.getWorkoutExercises().get(i).getReps());
-                workouts.put("sets" ,workout.getWorkoutExercises().get(i).getSets());
-                workouts.put("weight" ,workout.getWorkoutExercises().get(i).getWeight());
+                workouts.put("name", workout.getWorkoutExercises().get(i).getName());
+                workouts.put("reps", workout.getWorkoutExercises().get(i).getReps());
+                workouts.put("sets", workout.getWorkoutExercises().get(i).getSets());
+                workouts.put("weight", workout.getWorkoutExercises().get(i).getWeight());
                 exercisesArray.put(workouts);
             }
             exercises.put("title", workout.getName());
@@ -59,19 +62,19 @@ public class WorkoutList implements Saveable, Loadable{
         }
         root.put("workoutList", saveArray);
         try {
-         file = new FileWriter("./data/workoutListData.json");
-         file.write(root.toString());
-         file.close();
-         System.out.println("Saved WorkoutList!");
+            System.out.println(root.toString(2)); //FOR EXAMPLE
+            file = new FileWriter("./data/workoutListData.json");
+            file.write(root.toString());
+            file.close();
+            System.out.println("Saved WorkoutList!");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-         
+
         // FileWriter file;
         // try {
         //     file = new FileWriter("WorkoutListSave.txt");
-
         //     for(Workout workout : workoutList) {
         //         file.write(workout.getName() + "\n");
         //         for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
@@ -79,7 +82,6 @@ public class WorkoutList implements Saveable, Loadable{
         //         file.write(workout.getWorkoutExercises().get(i).getReps() + "\n");
         //         file.write(workout.getWorkoutExercises().get(i).getSets() + "\n");
         //         file.write(workout.getWorkoutExercises().get(i).getWeight() + "\n");
-                
         //     }
         //     file.write("end \n");
         //     }
@@ -88,13 +90,14 @@ public class WorkoutList implements Saveable, Loadable{
         //     e.printStackTrace();
         // }
     }
+
     @Override
     public void load() {
         File file;
         try {
             file = new File("WorkoutListSave.txt");
             Scanner in = new Scanner(file);
-            while(in.hasNextLine()) {
+            while (in.hasNextLine()) {
                 String workoutName = in.nextLine();
                 Workout workout = new Workout(workoutName);
                 String checkLine;

@@ -8,6 +8,9 @@ import model.WorkoutList;
 
 public class SavePrompt {
 
+    //REQUIRES: workoutList and exerciseList can't be null
+    //MODIFIES: workoutList, exerciseList
+    //EFFECTS: Gives user option to save and exit, don't save and exit, or cancel
     public boolean exitApp(WorkoutList workoutList, ExerciseList exerciseList) {
         Scanner scanner = new Scanner(System.in);
         boolean validChoice = false;
