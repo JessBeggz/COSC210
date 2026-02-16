@@ -1,20 +1,6 @@
-Workout1
-Squat
-10
-10
-10
-Bench Press
-30
-30
-30
-Bicep Curls
-50
-50
-50
-end
-workout2
-Leg Press
-40
-40
-40
-end
+workout1
+Hip Thrust
+22
+22
+22
+end 
