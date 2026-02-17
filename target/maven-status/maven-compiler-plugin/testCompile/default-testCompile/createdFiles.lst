@@ -1,0 +1,5 @@
+tests/LoadableTest.class
+tests/ExerciseTest.class
+tests/ExerciseListTest.class
+tests/WorkoutTest.class
+tests/WorkoutListTest.class
