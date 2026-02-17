@@ -1,1 +1,1 @@
-{"workoutList":[{"exercises":[{"reps":22,"sets":22,"name":"Hip Thrust","weight":22}],"title":"workout1"}]}
+{"WorkoutList":[{"workoutTitle":"workout1","WorkoutExercises":[{"reps":22,"sets":22,"name":"Hip Thrust","weight":22}]},{"workoutTitle":"workout1","WorkoutExercises":[{"reps":10,"sets":3,"name":"Squat","weight":100},{"reps":12,"sets":2,"name":"Hip Thrust","weight":110}]}]}

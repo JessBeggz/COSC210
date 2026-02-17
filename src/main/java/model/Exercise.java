@@ -1,4 +1,7 @@
 package model;
+
+import org.json.JSONObject;
+
 //This class represents an individual exercise and stores variables for said exercise, like the name, sets, reps, and weight.
 public class Exercise {
     private String name;
@@ -46,4 +49,17 @@ public class Exercise {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+    
+    //REQUIRES: this can't be null
+    //MODIFES: none
+    //EFFECTS: returns json object representing this exercise
+     public JSONObject toJson() {
+        JSONObject obj = new JSONObject();
+        obj.put("name", this.getName());
+        obj.put("sets", this.getSets());
+        obj.put("reps", this.getReps());
+        obj.put("weight", this.getWeight());
+        return obj;
+     }
+
 }

@@ -2,6 +2,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // This class creates a new workout for the user to add exercises too
 public class Workout {
     Scanner scanner = new Scanner(System.in);
@@ -47,5 +50,25 @@ public class Workout {
             }
         }
         workoutExercises.add(e);
+    }
+    
+
+    //REQUIRES: workoutExercises can't be null
+    //MODIFES: none
+    //EFFECTS: returns json object representing this workout
+    public JSONObject toJson() {
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        for (int i = 0; i < workoutExercises.size(); i++) {
+            JSONObject workouts = new JSONObject();
+            workouts.put("name", workoutExercises.get(i).getName());
+            workouts.put("reps", workoutExercises.get(i).getReps());
+            workouts.put("sets", workoutExercises.get(i).getSets());
+            workouts.put("weight", workoutExercises.get(i).getWeight());
+            array.put(workouts);
+            }
+            obj.put("workoutTitle", this.getName());
+            obj.put("WorkoutExercises", array);
+            return obj;
     }
 }

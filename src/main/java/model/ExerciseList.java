@@ -3,6 +3,9 @@ package model;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 //This class represents a list of exercise objects
 
 public class ExerciseList implements Saveable, Loadable {
@@ -78,6 +81,19 @@ public class ExerciseList implements Saveable, Loadable {
         return list.size();
     }
 
+    //REQUIRES: list can't be null
+    //MODIFES: none
+    //EFFECTS: returns json object representing this exerciseList
+    public JSONObject toJson() {
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        for(Exercise e : list) {
+            array.put(e.toJson());
+        }
+        obj.put("exerciseList", array);
+        return obj;
+    }
+
     @Override
     public void save() {
         // JSONObject root = new JSONObject();
@@ -111,6 +127,8 @@ public class ExerciseList implements Saveable, Loadable {
         //     e.printStackTrace();
         // }
     }
+
+    
 
     @Override
     public void load() {

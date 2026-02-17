@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import model.ExerciseList;
 import model.WorkoutList;
-import persistence.DataWriter;
+import persistence.JsonWriter;
 
 public class SavePrompt {
 
@@ -13,7 +13,8 @@ public class SavePrompt {
     //MODIFIES: workoutList, exerciseList
     //EFFECTS: Gives user option to save and exit, don't save and exit, or cancel
     public boolean exitApp(WorkoutList workoutList, ExerciseList exerciseList) {
-        DataWriter writer = new DataWriter();
+        JsonWriter exerciseWriter = new JsonWriter("./data/exerciseListData.json");
+        JsonWriter workoutWriter = new JsonWriter("./data/workoutListData.json");
         Scanner scanner = new Scanner(System.in);
         boolean validChoice = false;
         int userSelection;
@@ -24,7 +25,7 @@ public class SavePrompt {
             try {
                 userSelection = scanner.nextInt();
                 switch(userSelection) {
-                    case 1: writer.save(workoutList); writer.save(exerciseList); return false;
+                    case 1: exerciseWriter.open(); exerciseWriter.write(exerciseList); exerciseWriter.closeWriter(); workoutWriter.open(); workoutWriter.write(workoutList); workoutWriter.closeWriter(); return false;
                     case 2: return false;
                     case 3: return true;
                     default: System.out.println("Invalid choice, please enter a valid integer (1-3)");

@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class WorkoutList implements Saveable, Loadable {
 
     private ArrayList<Workout> workoutList;
@@ -30,6 +33,19 @@ public class WorkoutList implements Saveable, Loadable {
 
     public boolean contains(Workout workout) {
         return workoutList.contains(workout);
+    }
+
+    //REQUIRES: workoutList can't be null
+    //MODIFES: none
+    //EFFECTS: returns json object of workoutList
+    public JSONObject toJson() {
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        for(Workout w : workoutList) {
+            array.put(w.toJson());
+        }
+        obj.put("WorkoutList", array);
+        return obj;
     }
 
     //REQUIRES: workoutList can't be null

@@ -2,47 +2,58 @@ package tests;
 
 import java.io.File;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import model.Exercise;
 import model.ExerciseList;
 import model.Workout;
 import model.WorkoutList;
+import persistence.JsonWriter;
 
 public class SaveableTest {
 
-    ExerciseList e;
+    ExerciseList el;
     WorkoutList wl;
     Workout w;
+    JsonWriter exerciseWriter;
+    JsonWriter workoutWriter;
 
 
     @BeforeEach
     public void setUp() {
-        e = new ExerciseList();
+        el = new ExerciseList();
         wl = new WorkoutList();
         w = new Workout();
+        exerciseWriter = new JsonWriter("./data/exerciseListData.json");
+        workoutWriter = new JsonWriter("./data/workoutListData.json");
+        
     }
 
     @Test
-    public void testSaveCreateFile() {
-        File file = new File("./data/exerciseListData.json");
-        if(file.exists()) file.delete();
-        assertFalse(file.exists());
-        e.save();
-        assertTrue(file.exists());
-    }
-
-    @Test
-    public void testSaveData() {
-        File file = new File("./data/workoutListData.json");
+    public void testWorkoutList() {
+        w.addExercise(new Exercise("Jumping Jacks"));
         wl.addWorkout(w);
-        e.save();
-        assertTrue(file.exists());
-        assertTrue(file.length() > 0);
+        workoutWriter.open();
+        workoutWriter.write(wl);
+        workoutWriter.closeWriter();
 
+        File workoutFile = new File("./data/workoutListData.json");
+        assertTrue(workoutFile.exists());
     }
+
+    @Test
+    public void testExerciseList() {
+        el.add(new Exercise("Jumping Jacks"));
+        exerciseWriter.open();
+        exerciseWriter.write(el);
+        exerciseWriter.closeWriter();
+
+        File exerciseFile = new File("./data/exerciseListData.json");
+        assertTrue(exerciseFile.exists());
+    }
+
 
     
     // @Test
