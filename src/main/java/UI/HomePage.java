@@ -1,19 +1,36 @@
 package UI;
 // This class is the UI for our home dashboard of our workout app.
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.ExerciseList;
 import model.Workout;
 import model.WorkoutList;
+import persistence.JsonReader;
 
 public class HomePage {
-    public static void startApp(WorkoutList workoutList, ExerciseList exerciseList) {
+    public static void startApp() {
+        WorkoutList workoutList;
+        ExerciseList exerciseList;
+
         WorkoutPage workoutPage = new WorkoutPage();
         ExerciseManager exerciseManager = new ExerciseManager();
         SavePrompt savePrompt = new SavePrompt();
-        exerciseList.load();
-        workoutList.load();
+
+        try {
+            JsonReader workoutListReader = new JsonReader("./data/workoutListData.json");
+            workoutList = workoutListReader.readWorkoutList();
+
+            JsonReader exerciseListReader = new JsonReader("./data/exerciseListData.json");
+            exerciseList = exerciseListReader.readExerciseList();
+            System.out.println("Previous data found!");
+        } catch (IOException e) {
+            workoutList = new WorkoutList();
+            exerciseList = new ExerciseList();
+            System.out.println("No previous data found. Starting with default Exercise List.");
+            e.printStackTrace();
+        }
     
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;

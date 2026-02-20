@@ -1,6 +1,0 @@
-workout1
-Hip Thrust
-22
-22
-22
-end 

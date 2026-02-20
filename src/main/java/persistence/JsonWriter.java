@@ -8,15 +8,18 @@ import org.json.JSONObject;
 import model.ExerciseList;
 import model.WorkoutList;
 
+//Represents a writer that writes JSON representation of ExerciseList and WorkoutList to file
 public class JsonWriter {
 
     private String dest;
     private FileWriter file;
 
+    //EFFECTS: constructs writer to write to destination file
     public JsonWriter(String dest) {
         this.dest = dest;
     }
-
+    //MODIFIES: this
+    //EFFECTS: opens writer
     public void open() {
         try {
             file = new FileWriter(dest);
