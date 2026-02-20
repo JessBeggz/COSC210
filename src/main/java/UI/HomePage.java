@@ -24,7 +24,7 @@ public class HomePage {
 
             JsonReader exerciseListReader = new JsonReader("./data/exerciseListData.json");
             exerciseList = exerciseListReader.readExerciseList();
-            System.out.println("Previous data found!");
+            System.out.println("Previous data found! Loading data ...");
         } catch (IOException e) {
             workoutList = new WorkoutList();
             exerciseList = new ExerciseList();

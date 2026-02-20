@@ -16,7 +16,7 @@ import model.ExerciseList;
 import model.Workout;
 import model.WorkoutList;
 
-// Represents a reader that reads workroom from JSON data stored in file
+//Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
     private final String source;
 
@@ -107,30 +107,4 @@ public class JsonReader {
         }
         return wl;
     }
-
-    // // MODIFIES: wr
-    // // EFFECTS: parses thingies from JSON object and adds them to workroom
-    // private void addThingies(Workroom wr, JSONObject jsonObject) throws org.json.JSONException {
-    //     JSONArray jsonArray = jsonObject.getJSONArray("thingies");
-    //     for (int i = 0; i < jsonArray.length(); i++) {
-    //         Object item = jsonArray.get(i);
-    //         if (item instanceof JSONObject) {
-    //             addThingy(wr, (JSONObject) item);
-    //         }
-    //     }
-    // }
-
-    // // MODIFIES: wr
-    // // EFFECTS: parses thingy from JSON object and adds it to workroom
-    // private void addThingy(Workroom wr, JSONObject jsonObject) throws org.json.JSONException {
-    //     String name = jsonObject.has("name") ? jsonObject.getString("name") : "";
-    //     String categoryStr = jsonObject.has("category") ? jsonObject.getString("category") : "STITCHING";
-    //     Category category;
-    //     try {
-    //         category = Category.valueOf(categoryStr);
-    //     } catch (IllegalArgumentException e) {
-    //         category = Category.STITCHING;
-    //     }
-    //     wr.addThingy(new Thingy(name, category));
-    // }
 }

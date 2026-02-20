@@ -1,5 +1,5 @@
-tests/LoadableTest.class
-tests/ExerciseTest.class
-tests/ExerciseListTest.class
-tests/WorkoutTest.class
-tests/WorkoutListTest.class
+tests\ExerciseListTest.class
+tests\ExerciseTest.class
+tests\WorkoutTest.class
+tests\LoadableTest.class
+tests\WorkoutListTest.class

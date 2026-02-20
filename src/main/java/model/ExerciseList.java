@@ -1,6 +1,5 @@
 package model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 //This class represents a list of exercise objects
 
-public class ExerciseList implements Saveable, Loadable {
+public class ExerciseList {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -92,59 +91,5 @@ public class ExerciseList implements Saveable, Loadable {
         }
         obj.put("exerciseList", array);
         return obj;
-    }
-
-    @Override
-    public void save() {
-        // JSONObject root = new JSONObject();
-        // JSONArray saveArray = new JSONArray();
-        // FileWriter file;
-        // for (Exercise exercise : list) {
-        //     JSONObject exerciseName = new JSONObject();
-        //     exerciseName.put("name", exercise.getName());
-        //     saveArray.put(exerciseName);
-        // }
-        // root.put("exerciseList", saveArray);
-        // try {
-        //     System.out.println(root.toString(2)); // FOR EXAMPLE
-        //     file = new FileWriter("./data/exerciseListData.json");
-        //     file.write(root.toString());
-        //     file.close();
-        //     System.out.println("Saved ExerciseList!");
-        // } catch (IOException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
-
-        // FileWriter file;
-        // try {
-        //     file = new FileWriter("ExerciseListSave.txt");
-        //     for(Exercise myList : list) {
-        //         file.write(myList.getName() + "\n");
-        //     }
-        //     file.close();
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-    }
-
-    
-
-    @Override
-    public void load() {
-        File file;
-        try {
-            file = new File("ExerciseListSave.txt");
-            Scanner in = new Scanner(file);
-
-            while (in.hasNext()) {
-                String exerciseName = in.nextLine();
-                Exercise exercise = new Exercise(exerciseName);
-                add(exercise);
-            }
-            in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
