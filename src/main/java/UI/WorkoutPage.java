@@ -3,6 +3,7 @@ package UI;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import model.Exercise;
 import model.ExerciseList;
 import model.Workout;
@@ -60,10 +61,36 @@ public class WorkoutPage {
 
     //REQUIRES: workout, workoutList cannot be null
     //MODIFIES: workoutList
-    //EFFECTS: Add current workout to workoutList, exit workout and go back to home dashboard
+    //EFFECTS: Given choice to add current workout to workoutList, then exits workout and go back to home dashboard
     public void markComplete(Workout workout, WorkoutList workoutList) {
+        boolean validChoice = false;
+
+        System.out.println("Type '1' to save your completed workout");
+        System.out.println("Type '2' to discard your current workout");
+        int userSelection;
+
+        while (!validChoice) {
+            try {
+                userSelection = scanner.nextInt();
+                switch (userSelection) {
+                    case 1:
+                        workoutList.addWorkout(workout);
+                        validChoice = true;
+                        break;
+                    case 2:
+                        validChoice = true;
+                        break;
+                    default:
+                        System.out.println("Please enter integer between 1-2");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid integer (1-2)");
+                scanner.nextLine();
+            }
+
+        }
+        scanner.nextLine();
         System.out.println(workout.getName() + " Complete!");
-        workoutList.addWorkout(workout);
     }
 
     // REQUIRES: workoutList can't be null
