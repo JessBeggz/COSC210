@@ -71,6 +71,7 @@ public class ExerciseList {
                 name.equals("Bicep Curls")||name.equals("Leg Curls")||
                 name.equals("Lat Pulldown")) {
                     System.out.println("This exercise cannot be removed as it is a default exercise. \n");
+                    System.out.println("Returning to Home Page ... \n");
                 } else {
                     list.remove(i);
                     System.out.println("Exercise successfully removed! \n");
@@ -78,6 +79,8 @@ public class ExerciseList {
                 return;
             }
         }
+        System.out.println("No exercise found with that name.");
+        System.out.println("Returning to Home Page ... \n");
     }
 
     // REQUIRES: e cannot be null

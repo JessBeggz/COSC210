@@ -64,7 +64,5 @@ public class ExerciseManager {
             scanner.next();
         }
         }
-        System.out.println("No exercise found with that name.");
-        System.out.println("Returning to Home Page ... \n");
     }
 }
