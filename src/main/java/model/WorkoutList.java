@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//This class represents a list of workouts
 public class WorkoutList {
 
     private ArrayList<Workout> workoutList;
@@ -34,7 +35,6 @@ public class WorkoutList {
     }
 
     //REQUIRES: workoutList can't be null
-    //MODIFES: none
     //EFFECTS: returns json object of workoutList
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();

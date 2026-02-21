@@ -33,7 +33,6 @@ public class ExerciseListTest {
     public void testRemove() {
         list.add(b);
         assertEquals(8, list.size());
-        list.remove(b);
         assertEquals(list.size(), 7);
     }
 
@@ -41,7 +40,6 @@ public class ExerciseListTest {
     public void testContains() {
         list.add(b);
         assertTrue(list.contains(b));
-        list.remove(b);
         assertFalse(list.contains(b));
     }
 

@@ -51,15 +51,13 @@ public class Exercise {
     }
     
     //REQUIRES: this can't be null
-    //MODIFES: none
     //EFFECTS: returns json object representing this exercise
-     public JSONObject toJson() {
+    public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         obj.put("name", this.getName());
         obj.put("sets", this.getSets());
         obj.put("reps", this.getReps());
         obj.put("weight", this.getWeight());
         return obj;
-     }
-
+    }
 }

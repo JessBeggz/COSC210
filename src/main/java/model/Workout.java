@@ -1,14 +1,11 @@
 package model;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 // This class creates a new workout for the user to add exercises too
 public class Workout {
-    Scanner scanner = new Scanner(System.in);
-
     private String name;
     private ArrayList<Exercise> workoutExercises;
 
@@ -54,7 +51,6 @@ public class Workout {
     
 
     //REQUIRES: workoutExercises can't be null
-    //MODIFES: none
     //EFFECTS: returns json object representing this workout
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();

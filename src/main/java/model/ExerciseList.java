@@ -1,15 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-//This class represents a list of exercise objects
 
+//This class represents a list of exercises
 public class ExerciseList {
-
-    Scanner scanner = new Scanner(System.in);
 
     private ArrayList<Exercise> list;
     private Exercise squat = new Exercise("Squat");
@@ -62,10 +59,24 @@ public class ExerciseList {
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
-    // EFFECTS: if the list contains the exercise that is wanted to be removed, then remove the exercise from the list
-    public void remove(Exercise e) {
-        if (list.contains(e)) {
-            list.remove(e);
+    // EFFECTS: if the list contains the exercise that is wanted to be removed, and the exercise is not a default exercise,
+    // then remove the exercise from the list
+    public void removeExercise(String e) {
+        for(int i = 0; i < list.size(); i++) {
+            if(list.get(i).getName().equals(e)) {
+                String name = list.get(i).getName();
+            
+                if (name.equals("Squat")||name.equals("Hip Thrust")||
+                name.equals("Bench Press")||name.equals("Leg Press")||
+                name.equals("Bicep Curls")||name.equals("Leg Curls")||
+                name.equals("Lat Pulldown")) {
+                    System.out.println("This exercise cannot be removed as it is a default exercise. \n");
+                } else {
+                    list.remove(i);
+                    System.out.println("Exercise successfully removed! \n");
+                }
+                return;
+            }
         }
     }
 
@@ -81,7 +92,6 @@ public class ExerciseList {
     }
 
     //REQUIRES: list can't be null
-    //MODIFES: none
     //EFFECTS: returns json object representing this exerciseList
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
