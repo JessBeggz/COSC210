@@ -1,5 +1,5 @@
 package UI;
-// This class is the UI for our home dashboard of our workout app.
+
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,6 +9,7 @@ import model.Workout;
 import model.WorkoutList;
 import persistence.JsonReader;
 
+// This class is the UI for our home dashboard of our workout app
 public class HomePage {
     public static void startApp() {
         WorkoutList workoutList;

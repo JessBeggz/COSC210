@@ -1,12 +1,12 @@
 package UI;
 
-// This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.Exercise;
 import model.ExerciseList;
 
+// This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.
 public class ExerciseManager {
     Scanner scanner = new Scanner(System.in);
 

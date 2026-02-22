@@ -53,40 +53,4 @@ public class JsonWriterTest {
         File exerciseFile = new File("./data/exerciseListData.json");
         assertTrue(exerciseFile.exists());
     }
-
-
-    
-    // @Test
-    // public void testSaveExerciseList() {
-    //     e.save();
-    //     FileReader file;
-    //     String s = "";
-    //     try {
-    //     file = new FileReader("ExerciseListSave.txt");
-    //     Scanner scanner = new Scanner(file);
-    //         s = scanner.nextLine();
-    //     } catch (FileNotFoundException e1) {
-    //         e1.printStackTrace();
-    //     }
-    //     assertEquals(e.getExerciseList().get(0).getName(), s);
-    // }
-
-    // @Test
-    // public void testSaveWorkoutList() {
-    //     w.addWorkout(new Workout("Workout1"));
-    //     w.save();
-    //     FileReader file;
-    //     String s = "";
-    //     try {
-    //     file = new FileReader("WorkoutListSave.txt");
-    //     Scanner scanner = new Scanner(file);
-    //         s = scanner.nextLine();
-    //     } catch (FileNotFoundException e1) {
-    //         e1.printStackTrace();
-    //     }
-    //     assertEquals(w.getWorkoutList().get(0).getName(), s);
-
-    // }
-
-    
 }

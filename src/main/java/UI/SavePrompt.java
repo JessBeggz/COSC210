@@ -1,5 +1,4 @@
 package UI;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,6 +6,7 @@ import model.ExerciseList;
 import model.WorkoutList;
 import persistence.JsonWriter;
 
+// This class represents the UI for a save prompt that is shown to the user when they exit the app
 public class SavePrompt {
 
     //REQUIRES: workoutList and exerciseList can't be null

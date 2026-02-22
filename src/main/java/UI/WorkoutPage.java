@@ -1,5 +1,4 @@
 package UI;
-// This class represents the home dashboard UI for the user when they begin a workout
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,6 +8,7 @@ import model.ExerciseList;
 import model.Workout;
 import model.WorkoutList;
 
+// This class represents the home dashboard UI for the user when they begin a workout
 public class WorkoutPage {
 
     Scanner scanner = new Scanner(System.in);

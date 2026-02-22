@@ -2,7 +2,7 @@ package model;
 
 import org.json.JSONObject;
 
-//This class represents an individual exercise and stores variables for said exercise, like the name, sets, reps, and weight.
+// This class represents an individual exercise and stores variables for said exercise, like the name, sets, reps, and weight.
 public class Exercise {
     private String name;
     private int sets;

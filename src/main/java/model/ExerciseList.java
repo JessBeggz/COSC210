@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-//This class represents a list of exercises
+// this class represents a list of exercises
 public class ExerciseList {
 
     private ArrayList<Exercise> list;
-    //Default exercises
+    // default exercises
     private Exercise squat = new Exercise("Squat");
     private Exercise hipThrust = new Exercise("Hip Thrust");
     private Exercise benchPress = new Exercise("Bench Press");
