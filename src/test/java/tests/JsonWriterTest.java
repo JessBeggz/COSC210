@@ -12,7 +12,7 @@ import model.Workout;
 import model.WorkoutList;
 import persistence.JsonWriter;
 
-public class SaveableTest {
+public class JsonWriterTest {
 
     ExerciseList el;
     WorkoutList wl;
