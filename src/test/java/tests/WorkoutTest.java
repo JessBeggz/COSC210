@@ -17,4 +17,17 @@ public class WorkoutTest {
         w.addExercise(a);
         assertEquals(1, w.size());
     }
+
+    @Test
+    public void testWorkoutName() {
+        assertEquals(w.getName(), "Unnamed Workout");
+        w.setName("Workout1");
+        assertEquals(w.getName(), "Workout1");
+    }
+
+    @Test
+    public void testGetWorkoutExercises() {
+        w.addExercise(a);
+        assertEquals(w.getWorkoutExercises().size(), 1);
+    }
 }

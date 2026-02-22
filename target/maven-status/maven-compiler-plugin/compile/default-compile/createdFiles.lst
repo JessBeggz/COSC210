@@ -1,8 +1,0 @@
-model\Main.class
-model\WorkoutList.class
-model\Exercise.class
-UI\ExerciseManager.class
-UI\WorkoutPage.class
-model\Workout.class
-UI\HomePage.class
-model\ExerciseList.class

@@ -35,4 +35,25 @@ public class WorkoutListTest {
         assertEquals(2, workoutList.getWorkoutList().size());
     }
 
+    @Test
+    public void testWorkoutListSize() {
+        workoutList = new WorkoutList();
+        workoutList.addWorkout(workout1);
+        assertTrue(!workoutList.getWorkoutList().isEmpty());
+        workoutList.addWorkout(workout2);
+        assertEquals(workoutList.getWorkoutList().size(), 2);
+    }
+
+    @Test
+    public void testWorkoutListContains() {
+        workoutList = new WorkoutList();
+        workoutList.addWorkout(workout2);
+        assertTrue(workoutList.contains(workout2));
+        assertTrue(!workoutList.contains(workout1));
+    }
+
+
+
+
+
 }
