@@ -9,6 +9,7 @@ import org.json.JSONObject;
 public class ExerciseList {
 
     private ArrayList<Exercise> list;
+    //Default exercises
     private Exercise squat = new Exercise("Squat");
     private Exercise hipThrust = new Exercise("Hip Thrust");
     private Exercise benchPress = new Exercise("Bench Press");

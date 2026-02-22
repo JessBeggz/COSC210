@@ -22,32 +22,43 @@ public class ExerciseListTest {
 
     @Test
     public void testAdd() {
-        assertEquals(7, list.size());
-        list.add(a);
-        assertEquals(7, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
         list.add(b);
-        assertEquals(8, list.size()); //Should change to 8 cause no exercise with the name Jump already exists in the list
+        assertEquals(8, list.size()); //Should change to 8 cause no exercise with the name Jump exists in the list
     }
 
     @Test
-    public void testRemove() {
-        list.add(b);
-        assertEquals(8, list.size());
-        assertEquals(list.size(), 7);
+    public void testAddAlreadyInList() {
+        list.add(a);
+        assertEquals(7, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
     }
 
     @Test
     public void testContains() {
         list.add(b);
         assertTrue(list.contains(b));
+    }
+
+    @Test
+    public void testContainsFalse() {
         assertFalse(list.contains(b));
     }
 
-    // @Test
-    // public void testView() {
-    //     list.add(b);
-    //     list.view();
-    // }
+    @Test
+    public void testRemoveExerciseCustom() {
+        list.add(b);
+        list.removeExercise("Jump");
+        assertFalse(list.contains(b));
+    }
 
+    @Test
+    public void testRemoveDefaultExercise() {
+        list.removeExercise("Squat");
+        assertEquals(7, list.size()); //Should stay as 7 as removeExercise should not remove default exercises, and squat is a default exercise
+    }
 
+    @Test
+    public void testRemoveExerciseNotInList() {
+        list.removeExercise("Jumping Jacks");
+        assertEquals(7, list.size()); //Should stay as 7 as removeExercise should not remove anything when the name is not found
+    }
 }
