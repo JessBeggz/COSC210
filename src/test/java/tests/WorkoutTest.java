@@ -10,19 +10,26 @@ public class WorkoutTest {
     Exercise a = new Exercise("Squat");
 
     @Test
+    public void testDefaultConstructor() {
+        Workout d = new Workout();
+
+        assertEquals("Unnamed Workout", d.getName());
+    }
+
+    @Test
+    public void testCustomConstructor() {
+        Workout c = new Workout("Workout 1!");
+
+        assertEquals("Workout 1!", c.getName());
+    }
+
+    @Test
     public void testAddExercise() {
         assertEquals(0, w.size());
         w.addExercise(a);
         assertEquals(1, w.size());
         w.addExercise(a);
         assertEquals(1, w.size());
-    }
-
-    @Test
-    public void testWorkoutName() {
-        assertEquals(w.getName(), "Unnamed Workout");
-        w.setName("Workout1");
-        assertEquals(w.getName(), "Workout1");
     }
 
     @Test
