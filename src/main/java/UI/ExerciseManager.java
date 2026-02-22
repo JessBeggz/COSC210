@@ -65,4 +65,14 @@ public class ExerciseManager {
         }
         }
     }
+
+    // REQUIRES: exerciseList cannot be null
+    // EFFECTS: prints the names of the exercises in the list in the terminal
+    public void viewOnly(ExerciseList exerciseList) {
+        System.out.println("--------------");
+        for (int i = 0; i < exerciseList.size(); i++) {
+            System.out.println((i + 1) + ". " + exerciseList.getExerciseList().get(i).getName());
+        }
+        System.out.println("--------------");
+    }
 }
