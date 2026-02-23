@@ -17,6 +17,7 @@ public class WorkoutListTest {
     public void setUp() {
         workoutList = new WorkoutList();
         workout1 = new Workout("Upper");
+        workout2 = new Workout();
     }
 
     @Test
@@ -37,7 +38,7 @@ public class WorkoutListTest {
     }
 
     @Test
-    public void testWorkoutListSize() {
+    public void testGetWorkoutListSize() {
         workoutList.addWorkout(workout1);
 
         assertFalse(workoutList.getWorkoutList().isEmpty());
@@ -54,4 +55,15 @@ public class WorkoutListTest {
         assertTrue(workoutList.contains(workout2));
         assertFalse(workoutList.contains(workout1));
     }
+
+    @Test 
+    public void testWorkoutListSize() {
+        assertEquals(workoutList.size(), 0);
+        workoutList.addWorkout(workout1);
+        assertEquals(workoutList.size(), 1);
+        workoutList.addWorkout(workout2);
+        assertEquals(workoutList.size(), 2);
+    }
+
+    
 }

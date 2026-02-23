@@ -12,10 +12,10 @@
     <property name="user.country" value="CA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire/surefirebooter-20260221202501795_3.jar /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire 2026-02-21T20-25-01_760-jvmRun1 surefire-20260221202501795_1tmp surefire_0-20260221202501795_2tmp"/>
+    <property name="sun.java.command" value="/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire/surefirebooter-20260222214301035_3.jar /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire 2026-02-22T21-43-00_998-jvmRun1 surefire-20260222214301035_1tmp surefire_0-20260222214301035_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="tests.WorkoutTest#testGetWorkoutExercises"/>
+    <property name="test" value="tests.WorkoutTest#testEmptyWorkoutExercises"/>
     <property name="surefire.test.class.path" value="/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/test-classes:/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/classes:/Users/denton/.m2/repository/org/junit/platform/junit-platform-console-standalone/1.10.5/junit-platform-console-standalone-1.10.5.jar:/Users/denton/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/denton/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/denton/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/denton/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/denton/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/denton/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/denton/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/denton/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:/Users/denton/.m2/repository/org/json/json/20250517/json-20250517.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/denton"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire/surefirebooter-20260221202501795_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/target/surefire/surefirebooter-20260222214301035_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -59,5 +59,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testGetWorkoutExercises" classname="tests.WorkoutTest" time="0.003"/>
+  <testcase name="testEmptyWorkoutExercises" classname="tests.WorkoutTest" time="0.002"/>
 </testsuite>
