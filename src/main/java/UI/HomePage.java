@@ -11,6 +11,7 @@ import persistence.JsonReader;
 
 // This class is the UI for our home dashboard of our workout app
 public class HomePage {
+
     public static void startApp() {
         WorkoutList workoutList;
         ExerciseList exerciseList;
@@ -30,14 +31,14 @@ public class HomePage {
             exerciseList = new ExerciseList();
             System.out.println("No previous data found. Starting with default Exercise List.");
         }
-    
+
         selection(workoutList, exerciseList, workoutPage, exerciseManager, savePrompt);
     }
-    
+
     public static void selection(WorkoutList workoutList, ExerciseList exerciseList, WorkoutPage workoutPage, ExerciseManager exerciseManager, SavePrompt savePrompt) {
         Scanner scanner = new Scanner(System.in);
         boolean homePageRun = true;
-        while(homePageRun) {
+        while (homePageRun) {
             System.out.println("Type '1' to begin new workout");
             System.out.println("Type '2' to view workout history");
             System.out.println("Type '3' to create an exercise");
@@ -45,21 +46,31 @@ public class HomePage {
             System.out.println("Type '5' to exit");
             int userSelection;
             boolean validChoice = false;
-            while(!validChoice) {
+            while (!validChoice) {
                 try {
                     userSelection = scanner.nextInt();
-                    switch(userSelection) {
-                    case 1: Workout workout = new Workout(); workoutPage.createWorkout(workout, workoutList, exerciseList); break;
-                    case 2: workoutPage.viewWorkoutList(workoutList); break;
-                    case 3: exerciseManager.createExercise(exerciseList); break;
-                    case 4: exerciseManager.view(exerciseList); break;
-                    case 5: homePageRun = savePrompt.exitApp(workoutList, exerciseList);
+                    switch (userSelection) {
+                        case 1:
+                            Workout workout = new Workout();
+                            workoutPage.createWorkout(workout, workoutList, exerciseList);
+                            break;
+                        case 2:
+                            workoutPage.viewWorkoutList(workoutList);
+                            break;
+                        case 3:
+                            exerciseManager.createExercise(exerciseList);
+                            break;
+                        case 4:
+                            exerciseManager.view(exerciseList);
+                            break;
+                        case 5:
+                            homePageRun = savePrompt.exitApp(workoutList, exerciseList);
                     }
                     validChoice = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter a valid integer (1-5)");
-                scanner.nextLine();
-            }
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter a valid integer (1-5)");
+                    scanner.nextLine();
+                }
             }
         }
         scanner.close();
