@@ -1,4 +1,5 @@
 package UI;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -25,7 +26,8 @@ public class SavePrompt {
             try {
                 userSelection = scanner.nextInt();
                 switch(userSelection) {
-                    case 1: exerciseWriter.open(); exerciseWriter.write(exerciseList); exerciseWriter.closeWriter(); workoutWriter.open(); workoutWriter.write(workoutList); workoutWriter.closeWriter(); return false;
+                    case 1: 
+                    exerciseWriter.open(); exerciseWriter.write(exerciseList); exerciseWriter.closeWriter(); workoutWriter.open(); workoutWriter.write(workoutList); workoutWriter.closeWriter(); return false;
                     case 2: return false;
                     case 3: return true;
                     default: System.out.println("Invalid choice, please enter a valid integer (1-3)");
@@ -33,6 +35,8 @@ public class SavePrompt {
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid integer (1-3)");
                 scanner.nextLine();
+            } catch (IOException e) {
+                System.out.println("Failed to save data...");
             }
         }
         return true;

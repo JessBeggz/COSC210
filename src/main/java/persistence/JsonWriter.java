@@ -18,48 +18,36 @@ public class JsonWriter {
     public JsonWriter(String dest) {
         this.dest = dest;
     }
+
     //MODIFIES: this
     //EFFECTS: opens writer
-    public void open() {
-        try {
-            file = new FileWriter(dest);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void open() throws IOException {
+        file = new FileWriter(dest);
+
     }
 
     //REQUIRES: exerciseList can't be null
     //MODIFIES: file
     //EFFECTS: writes exerciseList json data to json destination file
-    public void write(ExerciseList exerciseList) {
+    public void write(ExerciseList exerciseList) throws IOException {
         JSONObject obj = exerciseList.toJson();
-        try {
-            file.write(obj.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        file.write(obj.toString());
+
     }
+
     //REQUIRES: workoutList can't be null
     //MODIFIES: file
     //EFFECTS: writes workoutList json data to json destination file
-    public void write(WorkoutList workoutList) {
+    public void write(WorkoutList workoutList) throws IOException {
         JSONObject obj = workoutList.toJson();
-        try {
-            file.write(obj.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        file.write(obj.toString());
     }
 
     //REQUIRES:
     //MODIFIES: file
     //EFFECTS: closes destination file
-    public void closeWriter() {
-        try {
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void closeWriter() throws IOException {
+        file.close();
     }
 
 }
