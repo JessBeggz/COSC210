@@ -12,7 +12,7 @@ import persistence.JsonReader;
 public class JsonReaderTest {
 
     @Test
-    public void emptyTest() throws IOException {
+    public void emptyTest() {
         JsonReader reader = new JsonReader("");
 
         assertThrows(IOException.class, reader::readWorkoutList);
@@ -20,18 +20,38 @@ public class JsonReaderTest {
     }
 
     @Test
-    public void workoutListDataTest() throws IOException {
-        JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListDataTest.json"); //contains 1 saved workout with 1 exercise object
-        WorkoutList wl = workoutListReader.readWorkoutList();
-        
-        assertEquals(1, wl.size());
+    public void workoutListDataTest() {
+        try {
+            JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListReadDataTest.json"); //contains 1 saved workout with 1 exercise object
+            WorkoutList wl = workoutListReader.readWorkoutList();
+            
+            assertEquals(1, wl.size());
+            assertEquals("workout1", wl.getWorkoutList().get(0).getName());
+            assertEquals("Hip Thrust", wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getName());
+            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getSets());
+            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getReps());
+            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getWeight());
+
+        } catch (IOException ex) {
+            System.out.println("Error occurred!");
+            ex.printStackTrace();
+        }
     }
 
     @Test
-    public void exerciseListDataTest() throws IOException {
-        JsonReader exerciseListReader = new JsonReader("./src/test/java/tests/data/exerciseListDataTest.json"); //contains default ExerciseList, which has 7 exercise objects
-        ExerciseList el = exerciseListReader.readExerciseList();
-        
-        assertEquals(7, el.size());
+    public void exerciseListDataTest() {
+        try {
+            JsonReader exerciseListReader = new JsonReader("./src/test/java/tests/data/exerciseListReadDataTest.json"); //contains default ExerciseList, which has 7 exercise objects
+            ExerciseList el = exerciseListReader.readExerciseList();
+            
+            assertEquals(7, el.size());
+            assertEquals("Squat", el.getExerciseList().get(0).getName());
+            assertEquals(0, el.getExerciseList().get(0).getSets());
+            assertEquals(0, el.getExerciseList().get(0).getReps());
+            assertEquals(0, el.getExerciseList().get(0).getWeight());
+        } catch (IOException ex) {
+            System.out.println("Error occurred!");
+            ex.printStackTrace();
+        }
     }
 }

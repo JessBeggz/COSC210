@@ -1,8 +1,8 @@
 package tests;
 
-import java.io.File;
+import java.io.IOException;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +10,7 @@ import model.Exercise;
 import model.ExerciseList;
 import model.Workout;
 import model.WorkoutList;
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 public class JsonWriterTest {
@@ -17,40 +18,82 @@ public class JsonWriterTest {
     ExerciseList el;
     WorkoutList wl;
     Workout w;
-    JsonWriter exerciseWriter;
-    JsonWriter workoutWriter;
+    Exercise e;
 
 
     @BeforeEach
     public void setUp() {
         el = new ExerciseList();
         wl = new WorkoutList();
-        w = new Workout();
-        exerciseWriter = new JsonWriter("./data/exerciseListData.json");
-        workoutWriter = new JsonWriter("./data/workoutListData.json");
-        
+        w = new Workout("Upper");
+        e = new Exercise("Jumping Jacks");
+    }
+
+    @Test
+    public void testEmptyWorkoutList() {
+        try {
+            JsonWriter workoutWriter = new JsonWriter("./src/test/java/tests/data/workoutListDataTest.json");
+            workoutWriter.open();
+            workoutWriter.write(wl);
+            workoutWriter.closeWriter();
+            
+            JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListDataTest.json");
+            wl = workoutListReader.readWorkoutList();
+
+            assertEquals(0, wl.getWorkoutList().size());
+        } catch (IOException ex) {
+            System.out.println("Error occurred!");
+            ex.printStackTrace();
+        }
     }
 
     @Test
     public void testWorkoutList() {
-        w.addExercise(new Exercise("Jumping Jacks"));
-        wl.addWorkout(w);
-        workoutWriter.open();
-        workoutWriter.write(wl);
-        workoutWriter.closeWriter();
+        try {
+            w.addExercise(e);
+            wl.getWorkoutList().add(w);
 
-        File workoutFile = new File("./data/workoutListData.json");
-        assertTrue(workoutFile.exists());
+            JsonWriter workoutWriter = new JsonWriter("./src/test/java/tests/data/workoutListWriteDataTest.json");
+            workoutWriter.open();
+            workoutWriter.write(wl);
+            workoutWriter.closeWriter();
+            
+            JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListWriteDataTest.json");
+            wl = workoutListReader.readWorkoutList();
+
+            assertEquals(1, wl.getWorkoutList().size());
+            assertEquals("Upper", wl.getWorkoutList().get(0).getName());
+            assertEquals("Jumping Jacks", wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getName());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getSets());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getReps());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getWeight());
+        } catch (IOException ex) {
+            System.out.println("Error occurred!");
+            ex.printStackTrace();
+        }
     }
 
     @Test
     public void testExerciseList() {
-        el.add(new Exercise("Jumping Jacks"));
-        exerciseWriter.open();
-        exerciseWriter.write(el);
-        exerciseWriter.closeWriter();
+        try {
+            el.add(e);
+            
+            JsonWriter exerciseWriter = new JsonWriter("./src/test/java/tests/data/exerciseListWriteDataTest.json");
+            exerciseWriter.open();
+            exerciseWriter.write(el);
+            exerciseWriter.closeWriter();
+            
+            JsonReader exerciseListReader = new JsonReader("./src/test/java/tests/data/exerciseListWriteDataTest.json");
+            el = exerciseListReader.readExerciseList();
 
-        File exerciseFile = new File("./data/exerciseListData.json");
-        assertTrue(exerciseFile.exists());
+            assertEquals(8, el.getExerciseList().size());
+            assertEquals("Jumping Jacks", el.getExerciseList().get(7).getName());
+            assertEquals(0, el.getExerciseList().get(7).getSets());
+            assertEquals(0, el.getExerciseList().get(7).getReps());
+            assertEquals(0, el.getExerciseList().get(7).getWeight());
+        } catch (IOException ex) {
+            System.out.println("Error occurred!");
+            ex.printStackTrace();
+        }
     }
 }
