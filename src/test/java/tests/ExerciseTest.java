@@ -1,14 +1,15 @@
 package tests;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import model.Exercise;
+import model.WeightedExercise;
 
 public class ExerciseTest {
 
     @Test
     public void testDefaultConstructor() {
-        Exercise d = new Exercise("Plank");
+        WeightedExercise d = new WeightedExercise("Plank");
 
         assertEquals("Plank", d.getName());
         assertEquals(0, d.getReps());
@@ -17,7 +18,7 @@ public class ExerciseTest {
     }
     @Test
     public void testCustomConstructor() {
-        Exercise c = new Exercise("Plank", 3, 12, 5);
+        WeightedExercise c = new WeightedExercise("Plank", 3, 12, 5);
 
         assertEquals("Plank", c.getName());
         assertEquals(3, c.getSets());
@@ -26,7 +27,7 @@ public class ExerciseTest {
     }
     @Test
     public void testSetters() {
-        Exercise blank = new Exercise("");
+        WeightedExercise blank = new WeightedExercise("");
 
         blank.setName("Push up");
         assertEquals("Push up", blank.getName());
@@ -39,5 +40,12 @@ public class ExerciseTest {
 
         blank.setWeight(45);
         assertEquals(45, blank.getWeight());
+    }
+
+    @Test
+    public void testGetDescription() {
+        WeightedExercise w = new WeightedExercise("Plank");
+        assertTrue(w.getDescription().length() > 0);
+        assertEquals("This is for exercises involving weights, reps and sets.", w.getDescription());
     }
 }

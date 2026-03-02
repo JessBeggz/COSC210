@@ -2,12 +2,12 @@ package tests;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import model.Exercise;
+import model.WeightedExercise;
 import model.Workout;
 
 public class WorkoutTest {
     Workout w = new Workout();;
-    Exercise a = new Exercise("Squat");
+    WeightedExercise a = new WeightedExercise("Squat");
 
     @Test
     public void testDefaultConstructor() {

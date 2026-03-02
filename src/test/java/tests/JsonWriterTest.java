@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
 import persistence.JsonReader;
@@ -18,7 +18,7 @@ public class JsonWriterTest {
     ExerciseList el;
     WorkoutList wl;
     Workout w;
-    Exercise e;
+    WeightedExercise e;
 
 
     @BeforeEach
@@ -26,7 +26,7 @@ public class JsonWriterTest {
         el = new ExerciseList();
         wl = new WorkoutList();
         w = new Workout("Upper");
-        e = new Exercise("Jumping Jacks");
+        e = new WeightedExercise("Jumping Jacks");
     }
 
     @Test

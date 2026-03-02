@@ -5,19 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 
 public class ExerciseListTest {
     ExerciseList list;
-    Exercise a;
-    Exercise b;
+    WeightedExercise a;
+    WeightedExercise b;
 
     @BeforeEach
     public void setUp() {
         list = new ExerciseList();
-        a = new Exercise("Squat");
-        b = new Exercise("Jump");
+        a = new WeightedExercise("Squat");
+        b = new WeightedExercise("Jump");
     }
 
     @Test
