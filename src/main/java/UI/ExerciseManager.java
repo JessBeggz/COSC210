@@ -3,8 +3,8 @@ package UI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 
 // This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.
 public class ExerciseManager {
@@ -16,13 +16,13 @@ public class ExerciseManager {
     public void createExercise(ExerciseList exerciseList) {
         System.out.println("Exercise name: ");
         String name = scanner.nextLine();
-        for(Exercise exercise : exerciseList.getExerciseList()) {
+        for(WeightedExercise exercise : exerciseList.getExerciseList()) {
             if(exercise.getName().equalsIgnoreCase(name)) {
                 System.out.println("Exercise already exists.");
                 return;
             }
         }
-        Exercise exercise = new Exercise(name);
+        WeightedExercise exercise = new WeightedExercise(name);
         exerciseList.add(exercise);
     }
 

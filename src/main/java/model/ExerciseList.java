@@ -8,15 +8,15 @@ import org.json.JSONObject;
 // this class represents a list of exercises
 public class ExerciseList {
 
-    private ArrayList<Exercise> list;
+    private ArrayList<WeightedExercise> list;
     // default exercises
-    private Exercise squat = new Exercise("Squat");
-    private Exercise hipThrust = new Exercise("Hip Thrust");
-    private Exercise benchPress = new Exercise("Bench Press");
-    private Exercise legPress = new Exercise("Leg Press");
-    private Exercise bicepCurls = new Exercise("Bicep Curls");
-    private Exercise legCurls = new Exercise("Leg Curls");
-    private Exercise latPulldown = new Exercise("Lat Pulldown");
+    private WeightedExercise squat = new WeightedExercise("Squat");
+    private WeightedExercise hipThrust = new WeightedExercise("Hip Thrust");
+    private WeightedExercise benchPress = new WeightedExercise("Bench Press");
+    private WeightedExercise legPress = new WeightedExercise("Leg Press");
+    private WeightedExercise bicepCurls = new WeightedExercise("Bicep Curls");
+    private WeightedExercise legCurls = new WeightedExercise("Leg Curls");
+    private WeightedExercise latPulldown = new WeightedExercise("Lat Pulldown");
 
     public ExerciseList() {
         list = new ArrayList<>();
@@ -30,24 +30,24 @@ public class ExerciseList {
     }
 
     // EFFECTS: returns the list within ExerciseList object
-    public ArrayList<Exercise> getExerciseList() {
+    public ArrayList<WeightedExercise> getExerciseList() {
         return list;
     }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: sets this ExerciseList to e
-    public void setExerciseList(ArrayList<Exercise> e) {
+    public void setExerciseList(ArrayList<WeightedExercise> e) {
         this.list = e;
     }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: if the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
-    public void add(Exercise e) {
+    public void add(WeightedExercise e) {
         boolean exists = false;
 
-        for (Exercise exercise : list) {
+        for (WeightedExercise exercise : list) {
             if (e.getName().equals(exercise.getName())) {
                 exists = true;
                 break;
@@ -86,7 +86,7 @@ public class ExerciseList {
 
     // REQUIRES: e cannot be null
     // EFFECTS: returns a boolean. true if list contains the exercise and false if the list does not contain the exercise
-    public boolean contains(Exercise e) {
+    public boolean contains(WeightedExercise e) {
         return list.contains(e);
     }
 
@@ -100,7 +100,7 @@ public class ExerciseList {
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         JSONArray array = new JSONArray();
-        for(Exercise e : list) {
+        for(WeightedExercise e : list) {
             array.put(e.toJson());
         }
         obj.put("exerciseList", array);

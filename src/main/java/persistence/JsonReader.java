@@ -11,8 +11,8 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
 
@@ -81,7 +81,7 @@ public class JsonReader {
         for (int i = 0; i < exerciseListArray.length(); i++) {
             JSONObject exerciseJson = exerciseListArray.getJSONObject(i);
 
-                Exercise e = new Exercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+                WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
                 el.add(e);
         }
         return el;
@@ -100,7 +100,7 @@ public class JsonReader {
             for (int j = 0; j < exercisesArray.length(); j++) {
                 JSONObject exerciseJson = exercisesArray.getJSONObject(j);
 
-                Exercise e = new Exercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+                WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
                 w.addExercise(e);
             }
             wl.addWorkout(w);
