@@ -11,7 +11,7 @@ public class WeightedExercise extends Exercise{
     private final String description = "This is for exercises involving weights, reps and sets.";
 
     public WeightedExercise (String name) {
-        super.setName(name);;
+        super.setName(name);
         sets = 0;
         reps = 0;
         weight = 0;
