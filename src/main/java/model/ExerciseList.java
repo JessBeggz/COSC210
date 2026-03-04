@@ -8,7 +8,7 @@ import org.json.JSONObject;
 // this class represents a list of exercises
 public class ExerciseList {
 
-    private ArrayList<WeightedExercise> list;
+    private ArrayList<Exercise> list;
     // default exercises
     private WeightedExercise squat = new WeightedExercise("Squat");
     private WeightedExercise hipThrust = new WeightedExercise("Hip Thrust");
@@ -17,6 +17,7 @@ public class ExerciseList {
     private WeightedExercise bicepCurls = new WeightedExercise("Bicep Curls");
     private WeightedExercise legCurls = new WeightedExercise("Leg Curls");
     private WeightedExercise latPulldown = new WeightedExercise("Lat Pulldown");
+    private CardioExercise run = new CardioExercise("Run", 0, 0);
 
     public ExerciseList() {
         list = new ArrayList<>();
@@ -27,27 +28,28 @@ public class ExerciseList {
         list.add(bicepCurls);
         list.add(legCurls);
         list.add(latPulldown);
+        list.add(run);
     }
 
     // EFFECTS: returns the list within ExerciseList object
-    public ArrayList<WeightedExercise> getExerciseList() {
+    public ArrayList<Exercise> getExerciseList() {
         return list;
     }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: sets this ExerciseList to e
-    public void setExerciseList(ArrayList<WeightedExercise> e) {
+    public void setExerciseList(ArrayList<Exercise> e) {
         this.list = e;
     }
 
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: if the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
-    public void add(WeightedExercise e) {
+    public void add(Exercise e) {
         boolean exists = false;
 
-        for (WeightedExercise exercise : list) {
+        for (Exercise exercise : list) {
             if (e.getName().equals(exercise.getName())) {
                 exists = true;
                 break;
@@ -100,10 +102,22 @@ public class ExerciseList {
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         JSONArray array = new JSONArray();
-        for(WeightedExercise e : list) {
-            array.put(e.toJson());
+        JSONArray cardioArray = new JSONArray();
+        for(Exercise e : list) {
+            if(e instanceof WeightedExercise) {
+                array.put(e.toJson());
+            }
         }
         obj.put("exerciseList", array);
+
+        for(Exercise c : list) {
+            if(c instanceof CardioExercise) {
+                cardioArray.put(c.toJson());
+            }
+        }
+        obj.put("cardioExerciseList", cardioArray);
+
+        
         return obj;
     }
 }

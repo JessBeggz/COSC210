@@ -7,7 +7,7 @@ import org.json.JSONObject;
 // This class creates a new workout for the user to add exercises too
 public class Workout {
     private String name;
-    private ArrayList<WeightedExercise> workoutExercises;
+    private final ArrayList<Exercise> workoutExercises;
 
     // Default Constructor
     public Workout() {
@@ -28,7 +28,7 @@ public class Workout {
     }
     // REQUIRES: this, workoutList, exerciseList  cannot be null
     // MODIFIES: this, workoutList, exerciseList
-    public ArrayList<WeightedExercise> getWorkoutExercises() {
+    public ArrayList<Exercise> getWorkoutExercises() {
         return workoutExercises;
     }
     // EFFECTS: returns an int representing the size of the list
@@ -39,8 +39,8 @@ public class Workout {
     // REQUIRES: e cannot be null
     // MODIFIES: workoutExercises
     // EFFECTS: checks if an exercise with the same name is already in workoutExercises. Adds to workoutExercises if there is not an exercise with the same name
-    public void addExercise(WeightedExercise e) {
-        for(WeightedExercise exercise : workoutExercises) {
+    public void addExercise(Exercise e) {
+        for(Exercise exercise : workoutExercises) {
             if(e.getName().equals(exercise.getName())) {
                 System.out.println(e.getName() + " not added to workout. Cannot add duplicate exercises.");
                 return;
@@ -58,9 +58,15 @@ public class Workout {
         for (int i = 0; i < workoutExercises.size(); i++) {
             JSONObject workouts = new JSONObject();
             workouts.put("name", workoutExercises.get(i).getName());
-            workouts.put("reps", workoutExercises.get(i).getReps());
-            workouts.put("sets", workoutExercises.get(i).getSets());
-            workouts.put("weight", workoutExercises.get(i).getWeight());
+            if(workoutExercises.get(i) instanceof WeightedExercise) {
+                workouts.put("reps", workoutExercises.get(i).getReps());
+                workouts.put("sets", workoutExercises.get(i).getSets());
+                workouts.put("weight", workoutExercises.get(i).getWeight());
+            } else if(workoutExercises.get(i) instanceof CardioExercise) {
+                workouts.put("distance", workoutExercises.get(i).getDistance());
+                workouts.put("time", workoutExercises.get(i).getTime());
+            }
+            
             array.put(workouts);
             }
             obj.put("workoutTitle", this.getName());

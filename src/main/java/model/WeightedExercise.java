@@ -30,29 +30,35 @@ public class WeightedExercise extends Exercise{
     //     this.name = name;
     // }
 
+    @Override
     public int getSets() {
         return sets;
     }
+    @Override
     public void setSets(int sets) {
         this.sets = sets;
     }
-
+    @Override
     public int getReps() {
         return reps;
     }
+    @Override
     public void setReps (int reps) {
         this.reps = reps;
     }
 
+    @Override
     public int getWeight() {
         return weight;
     }
+    @Override
     public void setWeight(int weight) {
         this.weight = weight;
     }
     
     //REQUIRES: this can't be null
     //EFFECTS: returns json object representing this exercise
+    @Override
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         obj.put("name", this.getName());

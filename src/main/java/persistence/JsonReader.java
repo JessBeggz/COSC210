@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.CardioExercise;
+import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
@@ -80,8 +82,14 @@ public class JsonReader {
         JSONArray exerciseListArray = jsonObject.getJSONArray("exerciseList");
         for (int i = 0; i < exerciseListArray.length(); i++) {
             JSONObject exerciseJson = exerciseListArray.getJSONObject(i);
+                Exercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+                el.add(e);
+        }
 
-                WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+        JSONArray cardioExerciseListArray = jsonObject.getJSONArray("cardioExerciseList");
+        for (int i = 0; i < cardioExerciseListArray.length(); i++) {
+            JSONObject exerciseJson = cardioExerciseListArray.getJSONObject(i);
+                Exercise e = new CardioExercise(exerciseJson.getString("name"), exerciseJson.getInt("time"), exerciseJson.getInt("distance"));
                 el.add(e);
         }
         return el;
@@ -99,9 +107,14 @@ public class JsonReader {
             JSONArray exercisesArray = workoutJson.getJSONArray("WorkoutExercises");
             for (int j = 0; j < exercisesArray.length(); j++) {
                 JSONObject exerciseJson = exercisesArray.getJSONObject(j);
-
-                WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
-                w.addExercise(e);
+                if(exerciseJson.has("weight")) {
+                    WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+                    w.addExercise(e);
+                } else if(exerciseJson.has("distance")) {
+                    CardioExercise c = new CardioExercise(exerciseJson.getString("name"), exerciseJson.getInt("distance"), exerciseJson.getInt("time"));
+                    w.addExercise(c);
+                }
+                
             }
             wl.addWorkout(w);
         }
