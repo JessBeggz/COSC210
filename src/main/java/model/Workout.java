@@ -58,9 +58,15 @@ public class Workout {
         for (int i = 0; i < workoutExercises.size(); i++) {
             JSONObject workouts = new JSONObject();
             workouts.put("name", workoutExercises.get(i).getName());
-            workouts.put("reps", workoutExercises.get(i).getReps());
-            workouts.put("sets", workoutExercises.get(i).getSets());
-            workouts.put("weight", workoutExercises.get(i).getWeight());
+            if(workoutExercises.get(i) instanceof WeightedExercise) {
+                workouts.put("reps", workoutExercises.get(i).getReps());
+                workouts.put("sets", workoutExercises.get(i).getSets());
+                workouts.put("weight", workoutExercises.get(i).getWeight());
+            } else if(workoutExercises.get(i) instanceof CardioExercise) {
+                workouts.put("distance", workoutExercises.get(i).getDistance());
+                workouts.put("time", workoutExercises.get(i).getTime());
+            }
+            
             array.put(workouts);
             }
             obj.put("workoutTitle", this.getName());

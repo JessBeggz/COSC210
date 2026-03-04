@@ -107,9 +107,14 @@ public class JsonReader {
             JSONArray exercisesArray = workoutJson.getJSONArray("WorkoutExercises");
             for (int j = 0; j < exercisesArray.length(); j++) {
                 JSONObject exerciseJson = exercisesArray.getJSONObject(j);
-
-                WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
-                w.addExercise(e);
+                if(exerciseJson.has("weight")) {
+                    WeightedExercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
+                    w.addExercise(e);
+                } else if(exerciseJson.has("distance")) {
+                    CardioExercise c = new CardioExercise(exerciseJson.getString("name"), exerciseJson.getInt("distance"), exerciseJson.getInt("time"));
+                    w.addExercise(c);
+                }
+                
             }
             wl.addWorkout(w);
         }

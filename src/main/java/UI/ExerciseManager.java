@@ -3,6 +3,7 @@ package UI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import model.CardioExercise;
 import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
@@ -15,6 +16,7 @@ public class ExerciseManager {
     // MODIFIES: exerciseList
     // EFFECTS: takes user input to create exercise name and adds to the list of available exercises if the exercise name doesn't already exist
     public void createExercise(ExerciseList exerciseList) {
+        int choice;
         System.out.println("Exercise name: ");
         String name = scanner.nextLine();
         for(Exercise exercise : exerciseList.getExerciseList()) {
@@ -23,7 +25,20 @@ public class ExerciseManager {
                 return;
             }
         }
-        Exercise exercise = new WeightedExercise(name);
+        System.out.println("Type '1' for weighted or '2' for cardio: ");
+        choice = scanner.nextInt();
+        scanner.nextLine();
+        Exercise exercise;
+        switch (choice) {
+            case 1:
+                exercise = new WeightedExercise(name);
+                break;
+            case 2:
+                exercise = new CardioExercise(name, 0, 0);
+                break;
+            default:
+                throw new AssertionError();
+        }
         exerciseList.add(exercise);
     }
 
