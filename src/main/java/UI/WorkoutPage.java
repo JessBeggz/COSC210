@@ -3,6 +3,7 @@ package UI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
@@ -118,7 +119,7 @@ public class WorkoutPage {
     // EFFECTS: prints the exercises in the ExerciseList, takes in user input for choosing an exercise as well as reps, sets, and weight, and runs the addExercise method
     public void chooseExercise(Workout workout, ExerciseList exerciseList) {
         ExerciseList el = new ExerciseList();
-        for (WeightedExercise exercise : exerciseList.getExerciseList()) {
+        for (Exercise exercise : exerciseList.getExerciseList()) {
             el.add(new WeightedExercise(exercise.getName(), exercise.getSets(), exercise.getReps(), exercise.getWeight()));
         }
         boolean validInt = false;

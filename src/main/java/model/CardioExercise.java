@@ -14,24 +14,29 @@ public class CardioExercise extends Exercise {
         this.time = time;
     }
 
+    @Override
     public double getTime() {
         return time;
     }
     
+    @Override
     public void setTime(long t) {
         this.time = t;
     }
     
+    @Override
     public double getDistance() {
         return distance;
     }
     
+    @Override
     public void setDistance(double d) {
         this.distance = d;
     }
 
     //REQUIRES: this can't be null
     //EFFECTS: returns json object representing this cardio exercise
+    @Override
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         obj.put("name", this.getName());
