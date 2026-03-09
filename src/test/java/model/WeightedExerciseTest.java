@@ -3,7 +3,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-public class ExerciseTest {
+public class WeightedExerciseTest {
 
     @Test
     public void testDefaultConstructor() {
@@ -24,7 +24,7 @@ public class ExerciseTest {
         assertEquals(5, c.getWeight());
     }
     @Test
-    public void testSetters() {
+    public void testSettersAndGetters() {
         WeightedExercise blank = new WeightedExercise("");
 
         blank.setName("Push up");

@@ -4,8 +4,8 @@ import org.json.JSONObject;
 
 // This class represents a cardio exercise and stores variables for said cardio exercise, like the time and distance
 public class CardioExercise extends Exercise {
-    private double distance;
-    private double cardioTime;
+    private double distance; //km
+    private double cardioTime; //minutes
     private final String description = "This is for cardio exercises involving distance and time";
 
     public CardioExercise(String name, double distance, double cardioTime) {
