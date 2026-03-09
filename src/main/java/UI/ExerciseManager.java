@@ -8,6 +8,7 @@ import model.DefaultExerciseRemovalException;
 import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
+import model.exceptions.DuplicateExerciseException;
 
 // This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.
 public class ExerciseManager {
@@ -20,12 +21,12 @@ public class ExerciseManager {
         int choice;
         System.out.println("Exercise name: ");
         String name = scanner.nextLine();
-        for(Exercise exercise : exerciseList.getExerciseList()) {
-            if(exercise.getName().equalsIgnoreCase(name)) {
-                System.out.println("Exercise already exists.");
-                return;
-            }
-        }
+        // for(Exercise exercise : exerciseList.getExerciseList()) {
+        //     if(exercise.getName().equalsIgnoreCase(name)) {
+        //         System.out.println("Exercise already exists.");
+        //         return;
+        //     }
+        // }
         System.out.println("Type '1' for weighted or '2' for cardio: ");
         choice = scanner.nextInt();
         scanner.nextLine();
@@ -40,7 +41,11 @@ public class ExerciseManager {
             default:
                 throw new AssertionError();
         }
-        exerciseList.add(exercise);
+        try {
+            exerciseList.add(exercise);
+        } catch (DuplicateExerciseException e) {
+            System.out.println("Exercise already exists.");
+        }
     }
 
     // REQUIRES: e cannot be null

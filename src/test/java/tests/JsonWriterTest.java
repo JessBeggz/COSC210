@@ -10,6 +10,7 @@ import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
+import model.exceptions.DuplicateExerciseException;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -74,7 +75,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    public void testExerciseList() {
+    public void testExerciseList() throws DuplicateExerciseException {
         try {
             el.add(e);
             

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.exceptions.DuplicateExerciseException;
+
 // this class represents a list of exercises
 public class ExerciseList {
 
@@ -46,18 +48,15 @@ public class ExerciseList {
     // REQUIRES: e cannot be null
     // MODIFIES: this
     // EFFECTS: if the list does not already contain the exercise name that is wanted to be added, then add the exercise to the list
-    public void add(Exercise e) {
-        boolean exists = false;
+    public void add(Exercise e) throws DuplicateExerciseException {
 
         for (Exercise exercise : list) {
             if (e.getName().equals(exercise.getName())) {
-                exists = true;
-                break;
+                throw new DuplicateExerciseException();
             }
         }
-        if (!exists) {
-            list.add(e);
-        }
+        list.add(e);
+        
     }
 
     // REQUIRES: e cannot be null
