@@ -9,6 +9,7 @@ import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
+import model.exceptions.DuplicateExerciseException;
 
 // This class represents the home dashboard UI for the user when they begin a workout
 public class WorkoutPage {
@@ -131,9 +132,18 @@ public class WorkoutPage {
         ExerciseList el = new ExerciseList();
         for (Exercise exercise : exerciseList.getExerciseList()) {
             if (exercise instanceof WeightedExercise) {
-                el.add(new WeightedExercise(exercise.getName(), exercise.getSets(), exercise.getReps(), exercise.getWeight()));
+                try {
+                    el.add(new WeightedExercise(exercise.getName(), exercise.getSets(), exercise.getReps(), exercise.getWeight()));
+                } catch (DuplicateExerciseException e) {
+                    System.out.println("Cannot add duplicate exercises.");
+                }
             } else if (exercise instanceof CardioExercise) {
-                el.add(new CardioExercise(exercise.getName(), exercise.getDistance(), exercise.getTime()));
+                try {
+                    el.add(new CardioExercise(exercise.getName(), exercise.getDistance(), exercise.getTime()));
+                } catch (DuplicateExerciseException e) {
+                    System.out.println("Cannot add duplicate exercises.");
+
+                }
             }
         }
         boolean validInt = false;

@@ -17,6 +17,7 @@ import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
+import model.exceptions.DuplicateExerciseException;
 
 //Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
@@ -83,14 +84,22 @@ public class JsonReader {
         for (int i = 0; i < exerciseListArray.length(); i++) {
             JSONObject exerciseJson = exerciseListArray.getJSONObject(i);
                 Exercise e = new WeightedExercise(exerciseJson.getString("name"), exerciseJson.getInt("reps"), exerciseJson.getInt("sets"), exerciseJson.getInt("weight"));
-                el.add(e);
+                try {
+                    el.add(e);
+                } catch (DuplicateExerciseException e1) {
+                   
+                }
         }
 
         JSONArray cardioExerciseListArray = jsonObject.getJSONArray("cardioExerciseList");
         for (int i = 0; i < cardioExerciseListArray.length(); i++) {
             JSONObject exerciseJson = cardioExerciseListArray.getJSONObject(i);
                 Exercise e = new CardioExercise(exerciseJson.getString("name"), exerciseJson.getInt("time"), exerciseJson.getInt("distance"));
-                el.add(e);
+                try {
+                    el.add(e);
+                } catch (DuplicateExerciseException e1) {
+                    
+                }
         }
         return el;
     }

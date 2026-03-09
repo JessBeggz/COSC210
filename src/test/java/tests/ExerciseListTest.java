@@ -1,4 +1,5 @@
 package tests;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import model.ExerciseList;
 import model.WeightedExercise;
+import model.exceptions.DuplicateExerciseException;
 
 public class ExerciseListTest {
     ExerciseList list;
@@ -22,19 +24,32 @@ public class ExerciseListTest {
 
     @Test
     public void testAdd() {
-        list.add(b);
-        assertEquals(8, list.size()); //Should change to 8 cause no exercise with the name Jump exists in the list
+        try {
+            list.add(b);
+        } catch (DuplicateExerciseException e) {
+            fail();
+        }
+        assertEquals(9, list.size()); //Should change to 8 cause no exercise with the name Jump exists in the list
     }
 
     @Test
     public void testAddAlreadyInList() {
-        list.add(a);
-        assertEquals(7, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
+        try {
+            list.add(a);
+            fail();
+        } catch (DuplicateExerciseException e) {
+            System.out.println("Exercise already exists");
+        }
+        assertEquals(8, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
     }
 
     @Test
     public void testContains() {
-        list.add(b);
+        try {
+            list.add(b);
+        } catch (DuplicateExerciseException e) {
+            fail();
+        }
         assertTrue(list.contains(b));
     }
 
@@ -44,7 +59,7 @@ public class ExerciseListTest {
     }
 
     @Test
-    public void testRemoveExerciseCustom() {
+    public void testRemoveExerciseCustom() throws DuplicateExerciseException {
         list.add(b);
         list.removeExercise("Jump");
         assertFalse(list.contains(b));
@@ -53,12 +68,12 @@ public class ExerciseListTest {
     @Test
     public void testRemoveDefaultExercise() {
         list.removeExercise("Squat");
-        assertEquals(7, list.size()); //Should stay as 7 as removeExercise should not remove default exercises, and squat is a default exercise
+        assertEquals(8, list.size()); //Should stay as 8 as removeExercise should not remove default exercises, and squat is a default exercise
     }
 
     @Test
     public void testRemoveExerciseNotInList() {
         list.removeExercise("Jumping Jacks");
-        assertEquals(7, list.size()); //Should stay as 7 as removeExercise should not remove anything when the name is not found
+        assertEquals(8, list.size()); //Should stay as 8 as removeExercise should not remove anything when the name is not found
     }
 }
