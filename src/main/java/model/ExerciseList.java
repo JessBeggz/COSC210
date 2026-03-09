@@ -53,7 +53,7 @@ public class ExerciseList {
 
         for (Exercise exercise : list) {
             if (e.getName().equals(exercise.getName())) {
-                throw new DuplicateExerciseException();
+                throw new DuplicateExerciseException("Exercise already exits, cannot add duplicates");
             }
         }
         list.add(e);

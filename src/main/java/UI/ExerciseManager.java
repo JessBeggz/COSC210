@@ -44,7 +44,7 @@ public class ExerciseManager {
         try {
             exerciseList.add(exercise);
         } catch (DuplicateExerciseException e) {
-            System.out.println("Exercise already exists.");
+            System.out.println(e.getMessage());
         }
     }
 
