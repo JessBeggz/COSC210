@@ -63,7 +63,7 @@ public class ExerciseList {
     // MODIFIES: this
     // EFFECTS: if the list contains the exercise that is wanted to be removed, and the exercise is not a default exercise,
     // then remove the exercise from the list
-    public void removeExercise(String e) {
+    public void removeExercise(String e) throws DefaultExerciseRemovalException {
         for(int i = 0; i < list.size(); i++) {
             if(list.get(i).getName().equals(e)) {
                 String name = list.get(i).getName();
@@ -72,17 +72,15 @@ public class ExerciseList {
                 name.equals("Bench Press")||name.equals("Leg Press")||
                 name.equals("Bicep Curls")||name.equals("Leg Curls")||
                 name.equals("Lat Pulldown")) {
-                    System.out.println("This exercise cannot be removed as it is a default exercise. \n");
-                    System.out.println("Returning to Home Page ... \n");
+                    throw new DefaultExerciseRemovalException("This exercise cannot be removed as it is a default exercise.");
                 } else {
                     list.remove(i);
-                    System.out.println("Exercise successfully removed! \n");
+                    System.out.println("Exercise successfully removed");
                 }
                 return;
             }
         }
         System.out.println("No exercise found with that name.");
-        System.out.println("Returning to Home Page ... \n");
     }
 
     // REQUIRES: e cannot be null

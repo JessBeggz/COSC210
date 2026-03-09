@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/model/WorkoutList.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/model/Main.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/model/CardioExercise.java
@@ -12,3 +13,19 @@
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/model/WeightedExercise.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/persistence/JsonWriter.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/main/java/model/exceptions/DuplicateExerciseException.java
+=======
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\UI\WorkoutPage.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\Workout.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\Main.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\UI\HomePage.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\WorkoutList.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\WeightedExercise.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\UI\ExerciseManager.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\persistence\JsonWriter.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\DefaultExerciseRemovalException.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\Exercise.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\CardioExercise.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\persistence\JsonReader.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\model\ExerciseList.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\main\java\UI\SavePrompt.java
+>>>>>>> fa3c7c04107d4979f494cd33fb30b09183bdbb04

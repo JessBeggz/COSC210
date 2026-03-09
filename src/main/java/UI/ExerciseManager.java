@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.CardioExercise;
+import model.DefaultExerciseRemovalException;
 import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
@@ -54,7 +55,13 @@ public class ExerciseManager {
     public void removeExercise(ExerciseList exerciseList) {
         System.out.println("Enter the name of the exercise that you wish to remove: ");
         String exerciseName = scanner.nextLine();
-        exerciseList.removeExercise(exerciseName);
+        try {
+            exerciseList.removeExercise(exerciseName);
+        } catch (DefaultExerciseRemovalException e) {
+            System.out.println(e.getMessage());
+        } finally {
+        System.out.println("Returning to Home Page ... \n");
+        }
     }
 
     // REQUIRES: exerciseList cannot be null
