@@ -4,10 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.CardioExercise;
-import model.DefaultExerciseRemovalException;
 import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
+import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
 
 // This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.

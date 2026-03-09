@@ -1,9 +1,6 @@
-package tests;
+package model;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import model.WeightedExercise;
-import model.Workout;
 
 public class WorkoutTest {
     Workout w = new Workout();;

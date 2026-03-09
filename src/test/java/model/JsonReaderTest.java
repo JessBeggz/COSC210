@@ -1,12 +1,10 @@
-package tests;
+package model;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
-import model.ExerciseList;
-import model.WorkoutList;
 import persistence.JsonReader;
 
 public class JsonReaderTest {

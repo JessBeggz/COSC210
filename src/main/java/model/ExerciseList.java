@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
 
 // this class represents a list of exercises
