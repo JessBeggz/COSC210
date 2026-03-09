@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.ExerciseList;
-import model.WeightedExercise;
 import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
 
@@ -30,7 +28,7 @@ public class ExerciseListTest {
         } catch (DuplicateExerciseException e) {
             fail();
         }
-        assertEquals(9, list.size()); //Should change to 8 cause no exercise with the name Jump exists in the list
+        assertEquals(9, list.size()); //Should change to 9 cause no exercise with the name Jump exists in the list
        
     }
 
@@ -40,9 +38,9 @@ public class ExerciseListTest {
             list.add(a);
             fail();
         } catch (DuplicateExerciseException e) {
-            System.out.println("Exercise already exists");
+            assertEquals("Exercise already exits, cannot add duplicates", e.getMessage());
         }
-        assertEquals(8, list.size()); //Should stay the same (7) cause an exercise with the name Squat already exists in the list
+        assertEquals(8, list.size()); //Should stay the same (8) cause an exercise with the name Squat already exists in the list
         
     }
 
