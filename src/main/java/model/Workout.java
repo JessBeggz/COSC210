@@ -58,13 +58,13 @@ public class Workout {
         for (int i = 0; i < workoutExercises.size(); i++) {
             JSONObject workouts = new JSONObject();
             workouts.put("name", workoutExercises.get(i).getName());
-            if(workoutExercises.get(i) instanceof WeightedExercise) {
-                workouts.put("reps", workoutExercises.get(i).getReps());
-                workouts.put("sets", workoutExercises.get(i).getSets());
-                workouts.put("weight", workoutExercises.get(i).getWeight());
-            } else if(workoutExercises.get(i) instanceof CardioExercise) {
-                workouts.put("distance", workoutExercises.get(i).getDistance());
-                workouts.put("time", workoutExercises.get(i).getTime());
+            if(workoutExercises.get(i) instanceof WeightedExercise weightedExercise) {
+                workouts.put("reps", weightedExercise.getReps());
+                workouts.put("sets", weightedExercise.getSets());
+                workouts.put("weight", weightedExercise.getWeight());
+            } else if(workoutExercises.get(i) instanceof CardioExercise cardioExercise) {
+                workouts.put("distance", cardioExercise.getDistance());
+                workouts.put("time", cardioExercise.getTime());
             }
             
             array.put(workouts);

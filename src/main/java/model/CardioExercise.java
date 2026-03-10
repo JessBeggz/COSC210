@@ -14,22 +14,18 @@ public class CardioExercise extends Exercise {
         this.cardioTime = cardioTime;
     }
 
-    @Override
     public double getTime() {
         return cardioTime;
     }
     
-    @Override
     public void setTime(long t) {
         this.cardioTime = t;
     }
     
-    @Override
     public double getDistance() {
         return distance;
     }
     
-    @Override
     public void setDistance(double d) {
         this.distance = d;
     }

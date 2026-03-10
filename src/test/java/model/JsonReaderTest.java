@@ -1,4 +1,5 @@
 package model;
+
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,13 +23,15 @@ public class JsonReaderTest {
         try {
             JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListReadDataTest.json"); //contains 1 saved workout with 1 exercise object
             WorkoutList wl = workoutListReader.readWorkoutList();
-            
+
             assertEquals(1, wl.size());
             assertEquals("workout1", wl.getWorkoutList().get(0).getName());
             assertEquals("Hip Thrust", wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getName());
-            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getSets());
-            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getReps());
-            assertEquals(22, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getWeight());
+            if (wl.getWorkoutList().get(0).getWorkoutExercises().get(0) instanceof WeightedExercise weightedExercise) {
+                assertEquals(22, weightedExercise.getSets());
+                assertEquals(22, weightedExercise.getReps());
+                assertEquals(22, weightedExercise.getWeight());
+            }
 
         } catch (IOException ex) {
             System.out.println("Error occurred!");
@@ -41,12 +44,15 @@ public class JsonReaderTest {
         try {
             JsonReader exerciseListReader = new JsonReader("./src/test/java/tests/data/exerciseListReadDataTest.json"); //contains default ExerciseList, which has 7 exercise objects
             ExerciseList el = exerciseListReader.readExerciseList();
-            
+
             assertEquals(7, el.size());
             assertEquals("Squat", el.getExerciseList().get(0).getName());
-            assertEquals(0, el.getExerciseList().get(0).getSets());
-            assertEquals(0, el.getExerciseList().get(0).getReps());
-            assertEquals(0, el.getExerciseList().get(0).getWeight());
+            if (el.getExerciseList().get(0) instanceof WeightedExercise weightedExercise) {
+                assertEquals(0, weightedExercise.getSets());
+                assertEquals(0, weightedExercise.getReps());
+                assertEquals(0, weightedExercise.getWeight());
+            }
+
         } catch (IOException ex) {
             System.out.println("Error occurred!");
             ex.printStackTrace();
