@@ -29,29 +29,26 @@ public class WeightedExercise extends Exercise{
     // public void setName(String name) {
     //     this.name = name;
     // }
-
-    @Override
     public int getSets() {
         return sets;
     }
-    @Override
+
     public void setSets(int sets) {
         this.sets = sets;
     }
-    @Override
+
     public int getReps() {
         return reps;
     }
-    @Override
+
     public void setReps (int reps) {
         this.reps = reps;
     }
 
-    @Override
     public int getWeight() {
         return weight;
     }
-    @Override
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
