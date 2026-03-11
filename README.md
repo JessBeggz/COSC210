@@ -38,3 +38,11 @@ User Stories for Denton Manders
 <li>As a user, I want to be able to save the entire application, including my completed workouts and custom exercise list, to a file (if I so choose), so that I don't lose all my data every time I exit</li>
 <li>As a user, I want to be able to have the option to add a workout to my workout history once completed, so that I don't have to add every completed workout</li>
 </ul>
+
+# Instructions for End User
+- You can view the panel that displays the Xs (exercises) that have already been added to the Y (exerciselist) by clicking the "View Exercise List" button on the homepage.
+- You can generate the first required action related to the user story "adding multiple Xs (exercises) to a Y (exerciselist)" by clicking the "Edit Exercise List" button on the homepage, then clicking the "Create Exercise" button.
+- You can generate the second required action related to the user story "adding multiple Xs (exercises) to a Y (workout)" by clicking the "Begin Workout" button on the homepage, then clicking the "Choose Exercise" button.
+- You can locate my visual component by looking at the background on the homepage.
+- You can save the state of my application by clicking the "Exit" button on the homepage, then clicking the "Save and Exit" button.
+- You can reload the state of my application by running the application and clicking the "Load Previous Data" button.
