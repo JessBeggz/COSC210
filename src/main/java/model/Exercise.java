@@ -16,7 +16,7 @@ public abstract class Exercise {
 
     public abstract JSONObject toJson();
 
-     public int getSets() {
+    public int getSets() {
         return 0;
     }
     public void setSets(int sets) {
@@ -34,7 +34,7 @@ public abstract class Exercise {
     public void setWeight(int weight) {
     }
 
-     public double getTime() {
+    public double getTime() {
         return 0;
     }
     
