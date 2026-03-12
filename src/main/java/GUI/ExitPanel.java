@@ -16,10 +16,10 @@ public class ExitPanel extends JPanel{
     JButton saveAndExit = new JButton();
     JButton exit = new JButton();
     JButton cancel = new JButton();
-    public ExitPanel(JFrame frame, JPanel buttonPanel) {
-        setLayout(new GridLayout(5,1));
 
-        setVisible(true);
+    public ExitPanel(JFrame frame, MainPanel mainPanel) {
+
+        setLayout(new GridLayout(5,1));
 
         exit.setForeground(Color.RED);
         exit.setFont(new Font("Arial", Font.BOLD, 16));
@@ -41,9 +41,12 @@ public class ExitPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
-                buttonPanel.setVisible(true);
+                mainPanel.showButtonPanel();
 			}
 		});
         add(cancel);
+
+        setVisible(true);
+
     }
 }

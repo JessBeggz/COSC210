@@ -68,5 +68,4 @@ public class WeightedExercise extends Exercise{
     public String getDescription() {
         return description;
     }
-   
 }

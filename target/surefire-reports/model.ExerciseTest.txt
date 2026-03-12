@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: model.ExerciseTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.017 s <<< FAILURE! -- in model.ExerciseTest
+model.ExerciseTest -- Time elapsed: 0.017 s <<< ERROR!
+org.junit.platform.commons.JUnitException: @BeforeAll method 'public void model.ExerciseTest.setUp()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1118)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

@@ -16,6 +16,8 @@ public class JsonWriterTest {
     WorkoutList wl;
     Workout w;
     WeightedExercise e;
+    CardioExercise c;
+
 
     @BeforeEach
     public void setUp() {
@@ -23,6 +25,7 @@ public class JsonWriterTest {
         wl = new WorkoutList();
         w = new Workout("Upper");
         e = new WeightedExercise("Jumping Jacks");
+        c = new CardioExercise("Skipping",0,0);
     }
 
     @Test
@@ -47,6 +50,7 @@ public class JsonWriterTest {
     public void testWorkoutList() {
         try {
             w.addExercise(e);
+            w.addExercise(c);
             wl.getWorkoutList().add(w);
 
             JsonWriter workoutWriter = new JsonWriter("./src/test/java/tests/data/workoutListWriteDataTest.json");
@@ -60,11 +64,12 @@ public class JsonWriterTest {
             assertEquals(1, wl.getWorkoutList().size());
             assertEquals("Upper", wl.getWorkoutList().get(0).getName());
             assertEquals("Jumping Jacks", wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getName());
-            if (wl.getWorkoutList().get(0).getWorkoutExercises().get(0) instanceof WeightedExercise weightedExercise) {
-                assertEquals(0, weightedExercise.getSets());
-                assertEquals(0, weightedExercise.getReps());
-                assertEquals(0, weightedExercise.getWeight());
-            }
+            assertEquals("Skipping", wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getName());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getSets());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getReps());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getWeight());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getTime());
+            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getDistance());
         } catch (IOException ex) {
             System.out.println("Error occurred!");
             ex.printStackTrace();

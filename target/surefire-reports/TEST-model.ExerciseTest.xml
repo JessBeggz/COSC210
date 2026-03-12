@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="model.ExerciseListTest" time="0.043" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="model.ExerciseTest" time="0.017" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="CA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Users\marks\OneDrive\Documents\oracleJdk-25\bin"/>
-    <property name="sun.java.command" value="C:\Users\marks\AppData\Local\Temp\surefire14946429962135197703\surefirebooter-20260311192852264_3.jar C:\Users\marks\AppData\Local\Temp\surefire14946429962135197703 2026-03-11T19-28-52_118-jvmRun1 surefire-20260311192852264_1tmp surefire_0-20260311192852264_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\marks\AppData\Local\Temp\surefire3351927983929787026\surefirebooter-20260311185506330_3.jar C:\Users\marks\AppData\Local\Temp\surefire3351927983929787026 2026-03-11T18-55-05_119-jvmRun1 surefire-20260311185506330_1tmp surefire_0-20260311185506330_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="model.ExerciseListTest#testGetExerciseList"/>
+    <property name="test" value="model.ExerciseTest"/>
     <property name="surefire.test.class.path" value="C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\target\test-classes;C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\target\classes;C:\Users\marks\.m2\repository\org\junit\platform\junit-platform-console-standalone\1.10.5\junit-platform-console-standalone-1.10.5.jar;C:\Users\marks\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\marks\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\marks\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\marks\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\marks\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\marks\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\marks\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\marks\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\Users\marks\.m2\repository\org\json\json\20250517\json-20250517.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\marks"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\marks\AppData\Local\Temp\surefire14946429962135197703\surefirebooter-20260311192852264_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\marks\AppData\Local\Temp\surefire3351927983929787026\surefirebooter-20260311185506330_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
@@ -61,5 +61,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testGetExerciseList" classname="model.ExerciseListTest" time="0.018"/>
+  <testcase name="" classname="model.ExerciseTest" time="0.017">
+    <error message="@BeforeAll method &apos;public void model.ExerciseTest.setUp()&apos; must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS)." type="org.junit.platform.commons.JUnitException"><![CDATA[org.junit.platform.commons.JUnitException: @BeforeAll method 'public void model.ExerciseTest.setUp()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1118)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></error>
+  </testcase>
 </testsuite>
