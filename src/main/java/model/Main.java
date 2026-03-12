@@ -1,10 +1,11 @@
 package model;
 
-import UI.HomePage;
+import GUI.HomeFrame;
 
 // This is our main class which runs the entire program
 public class Main {
     public static void main(String[] args) {
-        HomePage.startApp();
+        new HomeFrame();
+        // HomePage.startApp();
     }
 }
