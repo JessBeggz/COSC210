@@ -105,16 +105,16 @@ public class WorkoutPage {
             for (Workout workout : workoutList.getWorkoutList()) {
                 System.out.println(workout.getName() + ": ");
                 for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
-                    if (workout.getWorkoutExercises().get(i) instanceof WeightedExercise) {
+                    if (workout.getWorkoutExercises().get(i) instanceof WeightedExercise weightedExercise) {
                         System.out.println("- Exercise: " + workout.getWorkoutExercises().get(i).getName());
-                        System.out.println("-- Sets: " + workout.getWorkoutExercises().get(i).getSets());
-                        System.out.println("-- Reps: " + workout.getWorkoutExercises().get(i).getReps());
-                        System.out.println("-- Weight: " + workout.getWorkoutExercises().get(i).getWeight());
+                        System.out.println("-- Sets: " + weightedExercise.getSets());
+                        System.out.println("-- Reps: " + weightedExercise.getReps());
+                        System.out.println("-- Weight: " + weightedExercise.getWeight());
                         System.out.println();
-                    } else if (workout.getWorkoutExercises().get(i) instanceof CardioExercise) {
-                        System.out.println("- Exercise: " + workout.getWorkoutExercises().get(i).getName());
-                        System.out.println("-- Distance: " + workout.getWorkoutExercises().get(i).getDistance());
-                        System.out.println("-- Time: " + workout.getWorkoutExercises().get(i).getTime());
+                    } else if (workout.getWorkoutExercises().get(i) instanceof CardioExercise cardioExercise) {
+                        System.out.println("- Exercise: " + cardioExercise.getName());
+                        System.out.println("-- Distance: " + cardioExercise.getDistance());
+                        System.out.println("-- Time: " + cardioExercise.getTime());
                         System.out.println();
 
 
@@ -131,15 +131,15 @@ public class WorkoutPage {
     public void chooseExercise(Workout workout, ExerciseList exerciseList) {
         ExerciseList el = new ExerciseList();
         for (Exercise exercise : exerciseList.getExerciseList()) {
-            if (exercise instanceof WeightedExercise) {
+            if (exercise instanceof WeightedExercise weightedExercise) {
                 try {
-                    el.add(new WeightedExercise(exercise.getName(), exercise.getSets(), exercise.getReps(), exercise.getWeight()));
+                    el.add(new WeightedExercise(exercise.getName(), weightedExercise.getSets(), weightedExercise.getReps(), weightedExercise.getWeight()));
                 } catch (DuplicateExerciseException e) {
                     System.out.println("Cannot add duplicate exercises.");
                 }
-            } else if (exercise instanceof CardioExercise) {
+            } else if (exercise instanceof CardioExercise cardioExercise) {
                 try {
-                    el.add(new CardioExercise(exercise.getName(), exercise.getDistance(), exercise.getTime()));
+                    el.add(new CardioExercise(exercise.getName(), cardioExercise.getDistance(), cardioExercise.getTime()));
                 } catch (DuplicateExerciseException e) {
                     System.out.println("Cannot add duplicate exercises.");
 
@@ -176,14 +176,14 @@ public class WorkoutPage {
             }
         }
 
-        if (el.getExerciseList().get(num - 1) instanceof WeightedExercise) {
-            el.getExerciseList().get(num - 1).setSets(sets);
-            el.getExerciseList().get(num - 1).setReps(reps);
-            el.getExerciseList().get(num - 1).setWeight(weight);
+        if (el.getExerciseList().get(num - 1) instanceof WeightedExercise weightedExercise) {
+            weightedExercise.setSets(sets);
+            weightedExercise.setReps(reps);
+            weightedExercise.setWeight(weight);
         }
-        if (el.getExerciseList().get(num - 1) instanceof CardioExercise) {
-            el.getExerciseList().get(num - 1).setDistance(distance);
-            el.getExerciseList().get(num - 1).setTime(time);
+        if (el.getExerciseList().get(num - 1) instanceof CardioExercise cardioExercise) {
+            cardioExercise.setDistance(distance);
+            cardioExercise.setTime(time);
         }
         workout.addExercise(el.getExerciseList().get(num - 1));
     }

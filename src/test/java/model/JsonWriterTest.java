@@ -35,7 +35,7 @@ public class JsonWriterTest {
             workoutWriter.open();
             workoutWriter.write(wl);
             workoutWriter.closeWriter();
-            
+
             JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListDataTest.json");
             wl = workoutListReader.readWorkoutList();
 
@@ -57,7 +57,7 @@ public class JsonWriterTest {
             workoutWriter.open();
             workoutWriter.write(wl);
             workoutWriter.closeWriter();
-            
+
             JsonReader workoutListReader = new JsonReader("./src/test/java/tests/data/workoutListWriteDataTest.json");
             wl = workoutListReader.readWorkoutList();
 
@@ -80,20 +80,22 @@ public class JsonWriterTest {
     public void testExerciseList() throws DuplicateExerciseException {
         try {
             el.add(e);
-            
+
             JsonWriter exerciseWriter = new JsonWriter("./src/test/java/tests/data/exerciseListWriteDataTest.json");
             exerciseWriter.open();
             exerciseWriter.write(el);
             exerciseWriter.closeWriter();
-            
+
             JsonReader exerciseListReader = new JsonReader("./src/test/java/tests/data/exerciseListWriteDataTest.json");
             el = exerciseListReader.readExerciseList();
 
             assertEquals(8, el.getExerciseList().size());
             assertEquals("Jumping Jacks", el.getExerciseList().get(7).getName());
-            assertEquals(0, el.getExerciseList().get(7).getSets());
-            assertEquals(0, el.getExerciseList().get(7).getReps());
-            assertEquals(0, el.getExerciseList().get(7).getWeight());
+            if (el.getExerciseList().get(7) instanceof WeightedExercise weightedExercise) {
+                assertEquals(0, weightedExercise.getSets());
+                assertEquals(0, weightedExercise.getReps());
+                assertEquals(0, weightedExercise.getWeight());
+            }
         } catch (IOException ex) {
             System.out.println("Error occurred!");
             ex.printStackTrace();
