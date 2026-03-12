@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\CardioExerciseTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\JsonReaderTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\WorkoutListTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\JsonWriterTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\WorkoutTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\WeightedExerciseTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\ExerciseListTest.java
+C:\Users\marks\OneDrive\Documents\COSC210-GroupProject\COSC210\src\test\java\model\ExerciseTest.java
+=======
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/CardioExerciseTest.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/WorkoutTest.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/WorkoutListTest.java
@@ -5,3 +15,4 @@
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/JsonWriterTest.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/JsonReaderTest.java
 /Users/denton/Desktop/UBCO/Year2/Term2/COSC210/COSC210/src/test/java/model/ExerciseListTest.java
+>>>>>>> a70576f5431f37dc57bfd53fcef662936eb20b6d
