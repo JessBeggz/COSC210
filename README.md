@@ -45,4 +45,4 @@ User Stories for Denton Manders
 - You can generate the second required action related to the user story "adding multiple Xs (exercises) to a Y (workout)" by clicking the "Begin Workout" button on the homepage, then clicking the "Choose Exercise" button.
 - You can locate my visual component by looking at the background on the homepage.
 - You can save the state of my application by clicking the "Exit" button on the homepage, then clicking the "Save and Exit" button.
-- You can reload the state of my application by running the application and clicking the "Load Previous Data" button.
+- You can reload the state of my application by running the application and clicking the "Yes" button.
