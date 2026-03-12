@@ -116,10 +116,7 @@ public class WorkoutPage {
                         System.out.println("-- Distance: " + cardioExercise.getDistance());
                         System.out.println("-- Time: " + cardioExercise.getTime());
                         System.out.println();
-
-
                     }
-
                 }
             }
         }

@@ -16,8 +16,8 @@ public class HomeFrame extends JFrame {
         setBackground(Color.GRAY);
         this.add(mainPanel);
         setVisible(true);
-
         
+
     }
 
 }
