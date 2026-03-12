@@ -1,4 +1,6 @@
 package model;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -29,7 +31,11 @@ public class ExerciseListTest {
             fail();
         }
         assertEquals(9, list.size()); //Should change to 9 cause no exercise with the name Jump exists in the list
-       
+    }
+
+    @Test
+    public void testGetExerciseList() {
+        assertEquals("Squat",list.getExerciseList().get(0).getName());
     }
 
     @Test
@@ -86,5 +92,24 @@ public class ExerciseListTest {
         } catch (DefaultExerciseRemovalException e) {
             assertEquals(8, list.size()); //Should stay as 8 as removeExercise should not remove anything when the name is not found
         }
+    }
+
+    @Test
+    public void testToJson() {
+        JSONObject jsonTest = list.toJson();
+        JSONArray jsonWeightedList = jsonTest.getJSONArray("exerciseList");
+        JSONArray jsonCardioList = jsonTest.getJSONArray("cardioExerciseList");
+
+        JSONObject jsonSquat = jsonWeightedList.getJSONObject(0);
+        JSONObject jsonRun = jsonCardioList.getJSONObject(0);
+
+        assertEquals("Squat", jsonSquat.getString("name"));
+        assertEquals(0, jsonSquat.getInt("reps"));
+        assertEquals(0, jsonSquat.getInt("sets"));
+        assertEquals(0, jsonSquat.getInt("weight"));
+
+        assertEquals("Run", jsonRun.getString("name"));
+        assertEquals(0, jsonRun.getInt("time"));
+        assertEquals(0, jsonRun.getInt("distance"));
     }
 }

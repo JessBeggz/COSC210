@@ -1,9 +1,10 @@
 package model;
+import org.json.JSONObject;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WorkoutTest {
-    Workout w = new Workout();;
+    Workout w = new Workout();
     WeightedExercise a = new WeightedExercise("Squat");
 
     @Test
@@ -43,5 +44,20 @@ public class WorkoutTest {
     public void testSetName() {
         w.setName("Workout1");
         assertEquals(w.getName(), "Workout1");
+    }
+
+    @Test
+    public void testToJson() {
+        Workout test = new Workout("Test");
+
+        WeightedExercise we = new WeightedExercise("Sumo Squat", 3, 8, 50);
+        CardioExercise ce = new CardioExercise("Jumping Jacks", 5, 40);
+
+        test.addExercise(we);
+        test.addExercise(ce);
+
+        JSONObject jsonTest = test.toJson();
+
+        assertEquals("Test", jsonTest.get("workoutTitle"));
     }
 }
