@@ -30,7 +30,8 @@ public class HomePanel extends JPanel{
         beginWorkout.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-                
+                setVisible(false);
+                mainPanel.showWorkoutName();
 			}
 		});
         add(beginWorkout);

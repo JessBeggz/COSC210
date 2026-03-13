@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.ExerciseList;
@@ -25,6 +24,7 @@ public class MainPanel extends JPanel {
     private Image backgroundImage;
 
     WorkoutHistoryPanel workoutHistoryPanel;
+    WorkoutPanel workoutPanel;
     
     ReloadPanel reloadPanel;
     File exerciseListData;
@@ -36,6 +36,7 @@ public class MainPanel extends JPanel {
         exitPanel = new ExitPanel(frame, this);
         buttonPanel = new HomePanel(frame, this);
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
+        workoutPanel = new WorkoutPanel(this);
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
@@ -45,15 +46,12 @@ public class MainPanel extends JPanel {
 
             JsonReader exerciseListReader = new JsonReader("./data/exerciseListData.json");
             exerciseList = exerciseListReader.readExerciseList();
-            add(new JLabel("Previous data found!"));
+            // add(new JLabel("Previous data found!"));
         } catch (IOException e) {
             workoutList = new WorkoutList();
             exerciseList = new ExerciseList();
-            add(new JLabel("No previous data found."));
-
+            // add(new JLabel("No previous data found."));
         }
-        add(buttonPanel);
-        setVisible(true);
 
         reloadPanel = new ReloadPanel(frame, this);
 
@@ -86,5 +84,11 @@ public class MainPanel extends JPanel {
         add(workoutHistoryPanel);
         workoutHistoryPanel.setVisible(true);
         workoutHistoryPanel.viewWorkoutList(workoutList);
+    }
+
+    public void showWorkoutName() {
+        add(workoutPanel);
+        workoutPanel.setVisible(true);
+        workoutPanel.createWorkout(workoutList, exerciseList);
     }
 }
