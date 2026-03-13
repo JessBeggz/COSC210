@@ -91,4 +91,5 @@ public class MainPanel extends JPanel {
         workoutPanel.setVisible(true);
         workoutPanel.createWorkout(workoutList, exerciseList);
     }
+
 }
