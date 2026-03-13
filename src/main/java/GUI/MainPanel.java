@@ -1,8 +1,10 @@
 package GUI;
 
-import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,23 +13,24 @@ import model.ExerciseList;
 import model.WorkoutList;
 import persistence.JsonReader;
 
-public class MainPanel extends JPanel{
-    
-    HomePanel buttonPanel;
-    ExitPanel exitPanel;
+public class MainPanel extends JPanel {
 
-     WorkoutList workoutList;
-     ExerciseList exerciseList;
+    private HomePanel buttonPanel;
+    private ExitPanel exitPanel;
+
+    private WorkoutList workoutList;
+    private ExerciseList exerciseList;
+
+    private Image backgroundImage;
 
     WorkoutHistoryPanel workoutHistoryPanel;
+
     public MainPanel(JFrame frame) {
         exitPanel = new ExitPanel(frame, this);
         buttonPanel = new HomePanel(frame, this);
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
-        
 
-        setBackground(Color.RED);
-
+        backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
         try {
             JsonReader workoutListReader = new JsonReader("./data/workoutListData.json");
@@ -47,10 +50,16 @@ public class MainPanel extends JPanel{
 
     }
 
-    public void showExitPanel() {
-            add(exitPanel);
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+        }
 
-            exitPanel.setVisible(true);
+    public void showExitPanel() {
+        add(exitPanel);
+
+        exitPanel.setVisible(true);
     }
 
     public void showButtonPanel() {

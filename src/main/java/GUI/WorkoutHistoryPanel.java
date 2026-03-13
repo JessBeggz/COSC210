@@ -37,7 +37,6 @@ public class WorkoutHistoryPanel extends JPanel {
                 panel.showButtonPanel();
             }
         });
-        add(returnButton);
 
         setVisible(true);
     }
@@ -45,11 +44,12 @@ public class WorkoutHistoryPanel extends JPanel {
     // REQUIRES: workoutList can't be null
     // EFFECTS: prints the contents of workoutlist in the terminal
     public void viewWorkoutList(WorkoutList workoutList) {
+        removeAll();
+        add(returnButton);
         if (workoutList.size() == 0) {
             add(new JLabel("No Workout History."));
         } else {
             for (Workout workout : workoutList.getWorkoutList()) {
-                System.out.println(workout.getName() + ": ");
                 add(createLabel(workout.getName(), new Font("Arial", Font.BOLD, 32)));
                 for (int i = 0; i < workout.getWorkoutExercises().size(); i++) {
                     if (workout.getWorkoutExercises().get(i) instanceof WeightedExercise weightedExercise) {
