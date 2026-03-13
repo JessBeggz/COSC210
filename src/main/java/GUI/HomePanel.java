@@ -39,6 +39,14 @@ public class HomePanel extends JPanel{
         viewWorkoutHistory.setFont(new Font("Arial", Font.BOLD, 16));
         viewWorkoutHistory.setText("View Workout History");
         viewWorkoutHistory.setPreferredSize(new Dimension(250, 100));
+          viewWorkoutHistory.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+                setVisible(false);
+                mainPanel.showWorkoutList();
+
+			}
+		});
         add(viewWorkoutHistory);
 
         exit.setForeground(Color.RED);
