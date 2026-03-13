@@ -52,8 +52,6 @@ public class MainPanel extends JPanel {
             add(new JLabel("No previous data found."));
 
         }
-        add(buttonPanel);
-        setVisible(true);
 
         reloadPanel = new ReloadPanel(frame, this);
 
