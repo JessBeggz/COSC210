@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -24,8 +25,14 @@ public class MainPanel extends JPanel {
     private Image backgroundImage;
 
     WorkoutHistoryPanel workoutHistoryPanel;
+    
+    ReloadPanel reloadPanel;
+    File exerciseListData;
+    File workoutListData;
 
     public MainPanel(JFrame frame) {
+        exerciseListData = new File("data/exerciseListData.json");
+        workoutListData = new File("data/workoutListData.json");
         exitPanel = new ExitPanel(frame, this);
         buttonPanel = new HomePanel(frame, this);
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
@@ -48,6 +55,15 @@ public class MainPanel extends JPanel {
         add(buttonPanel);
         setVisible(true);
 
+        reloadPanel = new ReloadPanel(frame, this);
+
+        if(!exerciseListData.exists() && !workoutListData.exists()) {
+            add(buttonPanel);
+            setVisible(true);
+        } else {
+            add(reloadPanel);
+            setVisible(true);
+        }
     }
 
      @Override
@@ -58,11 +74,11 @@ public class MainPanel extends JPanel {
 
     public void showExitPanel() {
         add(exitPanel);
-
         exitPanel.setVisible(true);
     }
 
     public void showButtonPanel() {
+        add(buttonPanel);
         buttonPanel.setVisible(true);
     }
 
