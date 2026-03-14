@@ -76,6 +76,9 @@ public class MainPanel extends JPanel {
     }
 
     public void showButtonPanel() {
+        removeAll();
+        repaint();
+        revalidate();
         add(buttonPanel);
         buttonPanel.setVisible(true);
     }

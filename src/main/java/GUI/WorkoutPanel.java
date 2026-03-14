@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
 
@@ -22,9 +25,11 @@ public class WorkoutPanel extends JPanel{
     JTextField nameText = new JTextField(1);
     JButton setNameButton = new JButton();
     String name;
+    Workout workout;
+    MainPanel thePanel;
 
     public WorkoutPanel(MainPanel panel) {
-        Workout workout = new Workout();
+        thePanel = panel;
         setPreferredSize(new Dimension(500, 500));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY);
@@ -58,6 +63,7 @@ public class WorkoutPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 name = nameText.getText();
+                workout = new Workout(name);
                 remove(setNameButton);
                 remove(nameText);
                 chooseExercise(workoutList, exerciseList);
@@ -71,6 +77,7 @@ public class WorkoutPanel extends JPanel{
         repaint();
         revalidate();
         add(returnButton);
+        JButton completeWorkout = new JButton("Complete Workout");
         if (exerciseList.size() == 0) {
             add(new JLabel("No Exercise History."));
         } else {
@@ -78,6 +85,17 @@ public class WorkoutPanel extends JPanel{
                      add(createButton(exerciseList.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, exerciseList));
                     } 
             }
+
+            completeWorkout.setFont(new Font("Arial", Font.ITALIC, 16));
+            completeWorkout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               workoutList.addWorkout(workout);
+               thePanel.showButtonPanel();
+            }
+        });
+        add(completeWorkout);
+        
         }
 
 
@@ -98,7 +116,35 @@ public class WorkoutPanel extends JPanel{
         repaint();
         revalidate();
         add(returnButton);
-        add(createLabel(exerciseList.getExerciseList().get(key).getName(), new Font("Arial", Font.BOLD, 24)));
+        Exercise exercise = exerciseList.getExerciseList().get(key);
+        add(createLabel(exercise.getName(), new Font("Arial", Font.BOLD, 24)));
+        if(exercise instanceof WeightedExercise weightedExercise) {
+            JTextField reps = new JTextField(1);
+            JTextField sets = new JTextField(1);
+            JTextField weight = new JTextField(1);
+            JButton button = new JButton("Add to " + workout.getName());
+            add(createLabel("Sets (Ex. '3')", new Font("Arial", Font.BOLD, 16)));
+            add(reps);
+            add(createLabel("Reps (Ex. '12')", new Font("Arial", Font.BOLD, 16)));
+            add(sets);
+            add(createLabel("Weight in pounds (Ex. '100')", new Font("Arial", Font.BOLD, 16)));
+            add(weight);
+            button.setFont(new Font("Arial", Font.ITALIC, 16));
+            button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               int repsInt = Integer.parseInt(reps.getText());
+               int setsInt = Integer.parseInt(sets.getText());
+               int weightInt = Integer.parseInt(weight.getText());
+               weightedExercise.setReps(repsInt);
+               weightedExercise.setSets(setsInt);
+               weightedExercise.setWeight(weightInt);
+               workout.addExercise(weightedExercise);
+               chooseExercise(workoutList, exerciseList);
+            }
+        });
+            add(button);
+        }
     }
 
     public JLabel createLabel(String string, Font font) {
