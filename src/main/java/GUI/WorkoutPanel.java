@@ -75,19 +75,19 @@ public class WorkoutPanel extends JPanel{
             add(new JLabel("No Exercise History."));
         } else {
                 for (int i = 0; i < exerciseList.getExerciseList().size(); i++) {
-                     add(createButton(exerciseList.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, exerciseList));
-                    } 
+                    add(createButton(exerciseList.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, exerciseList));
+                    }
             }
         }
 
 
-     public JButton createButton(String string, Font font, int key, WorkoutList workoutList, ExerciseList exerciseList) {
+    public JButton createButton(String string, Font font, int key, WorkoutList workoutList, ExerciseList exerciseList) {
         JButton button = new JButton(string);
         button.setFont(font);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setData(key, workoutList, exerciseList);
+                setData(key, workoutList, exerciseList);
             }
         });
         return button;
