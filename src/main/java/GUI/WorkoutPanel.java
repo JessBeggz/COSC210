@@ -13,11 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.CardioExercise;
 import model.Exercise;
 import model.ExerciseList;
 import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
+import model.exceptions.DuplicateExerciseException;
 
 public class WorkoutPanel extends JPanel{
 
@@ -73,16 +75,32 @@ public class WorkoutPanel extends JPanel{
     }
 
     public void chooseExercise(WorkoutList workoutList, ExerciseList exerciseList) {
+
+        ExerciseList el = new ExerciseList();
+        for (Exercise exercise : exerciseList.getExerciseList()) {
+            if (exercise instanceof WeightedExercise weightedExercise) {
+                try {
+                    el.add(new WeightedExercise(exercise.getName(), weightedExercise.getSets(), weightedExercise.getReps(), weightedExercise.getWeight()));
+                } catch (DuplicateExerciseException e) {
+                }
+            } else if (exercise instanceof CardioExercise cardioExercise) {
+                try {
+                    el.add(new CardioExercise(exercise.getName(), cardioExercise.getDistance(), cardioExercise.getTime()));
+                } catch (DuplicateExerciseException e) {
+                }
+            }
+        }
+
         removeAll();
         repaint();
         revalidate();
         add(returnButton);
         JButton completeWorkout = new JButton("Complete Workout");
-        if (exerciseList.size() == 0) {
+        if (el.size() == 0) {
             add(new JLabel("No Exercise History."));
         } else {
-                for (int i = 0; i < exerciseList.getExerciseList().size(); i++) {
-                     add(createButton(exerciseList.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, exerciseList));
+                for (int i = 0; i < el.getExerciseList().size(); i++) {
+                     add(createButton(el.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, el));
                     } 
             }
 
@@ -116,6 +134,7 @@ public class WorkoutPanel extends JPanel{
         repaint();
         revalidate();
         add(returnButton);
+
         Exercise exercise = exerciseList.getExerciseList().get(key);
         add(createLabel(exercise.getName(), new Font("Arial", Font.BOLD, 24)));
         if(exercise instanceof WeightedExercise weightedExercise) {
