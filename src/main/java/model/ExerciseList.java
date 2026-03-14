@@ -57,7 +57,6 @@ public class ExerciseList {
             }
         }
         list.add(e);
-        
     }
 
     // REQUIRES: e cannot be null
@@ -76,12 +75,12 @@ public class ExerciseList {
                     throw new DefaultExerciseRemovalException("This exercise cannot be removed as it is a default exercise.");
                 } else {
                     list.remove(i);
-                    System.out.println("Exercise successfully removed");
+                    //System.out.println("Exercise successfully removed");
                 }
                 return;
             }
         }
-        System.out.println("No exercise found with that name.");
+        //System.out.println("No exercise found with that name.");
     }
 
     // REQUIRES: e cannot be null
@@ -114,8 +113,6 @@ public class ExerciseList {
             }
         }
         obj.put("cardioExerciseList", cardioArray);
-
-        
         return obj;
     }
 }

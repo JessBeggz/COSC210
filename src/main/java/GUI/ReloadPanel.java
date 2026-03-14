@@ -25,8 +25,9 @@ public class ReloadPanel extends JPanel {
 
     public ReloadPanel(JFrame frame, MainPanel mainPanel) {
         setLayout(new GridLayout(5,1));
+        setBackground(Color.GRAY);
         
-        text.setFont(new Font("Arial", Font.BOLD, 15));
+        text.setFont(new Font("Arial", Font.ITALIC, 18));
         add(text);
         
         yes.setForeground(Color.RED);
