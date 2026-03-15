@@ -9,6 +9,7 @@ import model.ExerciseList;
 import model.WeightedExercise;
 import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
+import model.exceptions.ExerciseNotFoundException;
 
 // This class represents the UI for managing exericses, this means this is the user interface for creating an exercise, viewing the exercise list etc.
 public class ExerciseManager {
@@ -58,6 +59,8 @@ public class ExerciseManager {
         try {
             exerciseList.removeExercise(exerciseName);
         } catch (DefaultExerciseRemovalException e) {
+            System.out.println(e.getMessage());
+        } catch (ExerciseNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
         System.out.println("Returning to Home Page ... \n");

@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import model.ExerciseList;
 import model.WorkoutList;
@@ -31,6 +30,7 @@ public class MainPanel extends JPanel {
     CreateExercisePanel createExercisePanel;
     CardioExercisePanel cardioExercisePanel;
     WeightedExercisePanel weightedExercisePanel;
+    RemoveExercisePanel removeExercisePanel;
     File exerciseListData;
     File workoutListData;
 
@@ -48,6 +48,7 @@ public class MainPanel extends JPanel {
         createExercisePanel = new CreateExercisePanel(this);
         cardioExercisePanel = new CardioExercisePanel(this, exerciseList);
         weightedExercisePanel = new WeightedExercisePanel(this, exerciseList);
+        removeExercisePanel = new RemoveExercisePanel(this, exerciseList);
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
@@ -135,5 +136,10 @@ public class MainPanel extends JPanel {
     public void showWeightedExercisePanel() {
         add(weightedExercisePanel);
         weightedExercisePanel.setVisible(true);
+    }
+
+    public void showRemoveExercisePanel() {
+        add(removeExercisePanel);
+        removeExercisePanel.setVisible(true);
     }
 }

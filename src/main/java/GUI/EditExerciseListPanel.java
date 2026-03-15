@@ -65,7 +65,7 @@ public class EditExerciseListPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
-                
+                mainPanel.showRemoveExercisePanel();
 			}
 		});
         add(removeExercise);

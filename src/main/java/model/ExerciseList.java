@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
+import model.exceptions.ExerciseNotFoundException;
 
 // this class represents a list of exercises
 public class ExerciseList {
@@ -63,7 +64,7 @@ public class ExerciseList {
     // MODIFIES: this
     // EFFECTS: if the list contains the exercise that is wanted to be removed, and the exercise is not a default exercise,
     // then remove the exercise from the list
-    public void removeExercise(String e) throws DefaultExerciseRemovalException {
+    public void removeExercise(String e) throws DefaultExerciseRemovalException, ExerciseNotFoundException {
         for(int i = 0; i < list.size(); i++) {
             if(list.get(i).getName().equals(e)) {
                 String name = list.get(i).getName();
@@ -80,6 +81,7 @@ public class ExerciseList {
                 return;
             }
         }
+        throw new ExerciseNotFoundException("No exercise was found with that name!");
         //System.out.println("No exercise found with that name.");
     }
 
