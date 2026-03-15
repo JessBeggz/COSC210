@@ -20,8 +20,11 @@ import model.WorkoutList;
 public class WorkoutHistoryPanel extends JPanel {
 
     JButton returnButton = new JButton();
+    WorkoutList workoutList;
+    MainPanel mainPanel;
 
     public WorkoutHistoryPanel(MainPanel panel) {
+        mainPanel = panel;
         setPreferredSize(new Dimension(500, 500));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY);
@@ -43,8 +46,9 @@ public class WorkoutHistoryPanel extends JPanel {
 
     // REQUIRES: workoutList can't be null
     // EFFECTS: prints the contents of workoutlist in the terminal
-    public void viewWorkoutList(WorkoutList workoutList) {
+    public void viewWorkoutList() {
         removeAll();
+        workoutList = mainPanel.getWorkoutList();
         add(returnButton);
         if (workoutList.size() == 0) {
             add(new JLabel("No Workout History."));

@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import model.ExerciseList;
 import model.WorkoutList;
@@ -25,6 +26,7 @@ public class MainPanel extends JPanel {
 
     WorkoutHistoryPanel workoutHistoryPanel;
     WorkoutPanel workoutPanel;
+    JScrollPane scrollPane;
     
     ReloadPanel reloadPanel;
     File exerciseListData;
@@ -37,6 +39,8 @@ public class MainPanel extends JPanel {
         buttonPanel = new HomePanel(frame, this);
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
         workoutPanel = new WorkoutPanel(this);
+        scrollPane = new JScrollPane(workoutHistoryPanel);
+
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
@@ -84,15 +88,26 @@ public class MainPanel extends JPanel {
     }
 
     public void showWorkoutList() {
+        removeAll();
+        repaint();
+        revalidate();
         add(workoutHistoryPanel);
         workoutHistoryPanel.setVisible(true);
-        workoutHistoryPanel.viewWorkoutList(workoutList);
+        workoutHistoryPanel.viewWorkoutList();
     }
 
     public void showWorkoutName() {
         add(workoutPanel);
         workoutPanel.setVisible(true);
-        workoutPanel.createWorkout(workoutList, exerciseList);
+        workoutPanel.createWorkout();
+    }
+
+    public ExerciseList getExerciseList() {
+        return exerciseList;
+    }
+
+    public WorkoutList getWorkoutList() {
+        return workoutList;
     }
 
 }
