@@ -1,4 +1,6 @@
 package model;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -53,7 +55,7 @@ public class WorkoutListTest {
         assertFalse(workoutList.contains(workout1));
     }
 
-    @Test 
+    @Test
     public void testWorkoutListSize() {
         assertEquals(workoutList.size(), 0);
         workoutList.addWorkout(workout1);
@@ -62,5 +64,14 @@ public class WorkoutListTest {
         assertEquals(workoutList.size(), 2);
     }
 
-    
+    @Test
+    public void testToJson() {
+        workoutList.addWorkout(workout1);
+        
+        JSONObject jsonTest = workoutList.toJson();
+        JSONArray jsonList = jsonTest.getJSONArray("WorkoutList");
+        JSONObject jsonWorkout = jsonList.getJSONObject(0);
+
+        assertEquals("Upper", jsonWorkout.getString("workoutTitle"));
+    }
 }

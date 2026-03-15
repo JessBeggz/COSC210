@@ -106,9 +106,7 @@ public class ExerciseListTest {
     public void testToJson() {
         JSONObject jsonTest = list.toJson();
         JSONArray jsonWeightedList = jsonTest.getJSONArray("exerciseList");
-        JSONArray jsonCardioList = jsonTest.getJSONArray("cardioExerciseList");
-
-        JSONObject jsonSquat = jsonWeightedList.getJSONObject(0);
+        JSONArray jsonCardioList = jsonTest.getJSONArray("cardioExerciseList");        JSONObject jsonSquat = jsonWeightedList.getJSONObject(0);
         JSONObject jsonRun = jsonCardioList.getJSONObject(0);
 
         assertEquals("Squat", jsonSquat.getString("name"));
