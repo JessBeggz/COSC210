@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.DuplicateExerciseException;
+import model.exceptions.ExerciseNotFoundException;
 
 public class ExerciseListTest {
     ExerciseList list;
@@ -66,13 +67,16 @@ public class ExerciseListTest {
     }
 
     @Test
-    public void testRemoveExerciseCustom() throws DuplicateExerciseException {
+    public void testRemoveExerciseCustom() throws DuplicateExerciseException, ExerciseNotFoundException {
         list.add(b);
         try {
             list.removeExercise("Jump");
         } catch (DefaultExerciseRemovalException e){
-            assertFalse(list.contains(b));
+            fail();
+        } catch (ExerciseNotFoundException e){
+            fail();
         }
+        assertFalse(list.contains(b));
     }
 
     @Test
@@ -82,6 +86,8 @@ public class ExerciseListTest {
         } catch (DefaultExerciseRemovalException e) {
             assertEquals("This exercise cannot be removed as it is a default exercise.", e.getMessage());
             assertEquals(8, list.size()); //Should stay as 8 as removeExercise should not remove default exercises, and squat is a default exercise
+        } catch (ExerciseNotFoundException e){
+            fail();
         }
     }
 
@@ -90,6 +96,8 @@ public class ExerciseListTest {
         try {
             list.removeExercise("Jumping Jacks");
         } catch (DefaultExerciseRemovalException e) {
+            fail();
+        } catch (ExerciseNotFoundException e){
             assertEquals(8, list.size()); //Should stay as 8 as removeExercise should not remove anything when the name is not found
         }
     }

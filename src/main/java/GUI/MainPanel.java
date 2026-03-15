@@ -31,26 +31,13 @@ public class MainPanel extends JPanel {
     CardioExercisePanel cardioExercisePanel;
     WeightedExercisePanel weightedExercisePanel;
     RemoveExercisePanel removeExercisePanel;
+    ViewExerciseListPanel viewExerciseListPanel;
     File exerciseListData;
     File workoutListData;
 
     public MainPanel(JFrame frame) {
         exerciseListData = new File("data/exerciseListData.json");
         workoutListData = new File("data/workoutListData.json");
-
-        exerciseList = new ExerciseList();
-
-        exitPanel = new ExitPanel(frame, this);
-        buttonPanel = new HomePanel(frame, this);
-        editExerciseListPanel = new EditExerciseListPanel(this);
-        workoutHistoryPanel = new WorkoutHistoryPanel(this);
-        workoutPanel = new WorkoutPanel(this);
-        createExercisePanel = new CreateExercisePanel(this);
-        cardioExercisePanel = new CardioExercisePanel(this, exerciseList);
-        weightedExercisePanel = new WeightedExercisePanel(this, exerciseList);
-        removeExercisePanel = new RemoveExercisePanel(this, exerciseList);
-
-        backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
         try {
             JsonReader workoutListReader = new JsonReader("./data/workoutListData.json");
@@ -64,6 +51,19 @@ public class MainPanel extends JPanel {
             exerciseList = new ExerciseList();
             // add(new JLabel("No previous data found."));
         }
+
+        exitPanel = new ExitPanel(frame, this);
+        buttonPanel = new HomePanel(frame, this);
+        editExerciseListPanel = new EditExerciseListPanel(this);
+        workoutHistoryPanel = new WorkoutHistoryPanel(this);
+        workoutPanel = new WorkoutPanel(this);
+        createExercisePanel = new CreateExercisePanel(this);
+        cardioExercisePanel = new CardioExercisePanel(this, exerciseList);
+        weightedExercisePanel = new WeightedExercisePanel(this, exerciseList);
+        removeExercisePanel = new RemoveExercisePanel(this, exerciseList);
+        viewExerciseListPanel = new ViewExerciseListPanel(this, exerciseList);
+
+        backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
         reloadPanel = new ReloadPanel(frame, this);
 
@@ -141,5 +141,11 @@ public class MainPanel extends JPanel {
     public void showRemoveExercisePanel() {
         add(removeExercisePanel);
         removeExercisePanel.setVisible(true);
+    }
+
+    public void showViewExerciseListPanel() {
+        add(viewExerciseListPanel);
+        viewExerciseListPanel.setVisible(true);
+        viewExerciseListPanel.view(exerciseList);
     }
 }

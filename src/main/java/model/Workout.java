@@ -42,7 +42,7 @@ public class Workout {
     public void addExercise(Exercise e) {
         for(Exercise exercise : workoutExercises) {
             if(e.getName().equals(exercise.getName())) {
-                System.out.println(e.getName() + " not added to workout. Cannot add duplicate exercises.");
+                //System.out.println(e.getName() + " not added to workout. Cannot add duplicate exercises.");
                 return;
             }
         }

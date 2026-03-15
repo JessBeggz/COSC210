@@ -13,9 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.ExerciseList;
-import model.WorkoutList;
-
 public class ReloadPanel extends JPanel {
     JButton yes = new JButton();
     JButton no = new JButton();
@@ -50,13 +47,10 @@ public class ReloadPanel extends JPanel {
         no.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+                
                 exerciseListData.delete();
                 workoutListData.delete();
-
-            WorkoutList workoutList = new WorkoutList();
-            ExerciseList exerciseList = new ExerciseList();
-
-            setVisible(false);
+                setVisible(false);
                 mainPanel.showButtonPanel();
 			}
 		});

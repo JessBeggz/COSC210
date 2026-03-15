@@ -15,8 +15,9 @@ public class HomePanel extends JPanel{
 
     JButton beginWorkout = new JButton();
     JButton viewWorkoutHistory = new JButton();
-    JButton exit = new JButton();
     JButton editExerciseList = new JButton();
+    JButton viewExerciseList = new JButton();
+    JButton exit = new JButton();
 
 
 
@@ -64,6 +65,20 @@ public class HomePanel extends JPanel{
 			}
 		});
         add(editExerciseList);
+
+        viewExerciseList.setForeground(Color.RED);
+        viewExerciseList.setFont(new Font("Arial", Font.BOLD, 16));
+        viewExerciseList.setText("View Exercise List");
+        viewExerciseList.setPreferredSize(new Dimension(250, 100));
+        viewExerciseList.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+                setVisible(false);
+                mainPanel.showViewExerciseListPanel();
+
+			}
+		});
+        add(viewExerciseList);
 
         exit.setForeground(Color.RED);
         exit.setFont(new Font("Arial", Font.BOLD, 16));
