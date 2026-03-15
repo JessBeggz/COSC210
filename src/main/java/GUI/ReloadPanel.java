@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -24,10 +25,12 @@ public class ReloadPanel extends JPanel {
 
     public ReloadPanel(JFrame frame, MainPanel mainPanel) {
         setLayout(new GridLayout(5,1));
+        setBackground(Color.GRAY);
         
-        text.setFont(new Font("Arial", Font.BOLD, 15));
+        text.setFont(new Font("Arial", Font.ITALIC, 18));
         add(text);
         
+        yes.setForeground(Color.RED);
         yes.setFont(new Font("Arial", Font.BOLD, 16));
         yes.setText("Yes");
         yes.setPreferredSize(new Dimension(250, 100));
@@ -40,6 +43,7 @@ public class ReloadPanel extends JPanel {
 		});
         add(yes);
 
+        no.setForeground(Color.RED);
         no.setFont(new Font("Arial", Font.BOLD, 16));
         no.setText("No");
         no.setPreferredSize(new Dimension(250, 100));

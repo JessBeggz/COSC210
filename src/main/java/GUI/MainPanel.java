@@ -26,21 +26,28 @@ public class MainPanel extends JPanel {
 
     WorkoutHistoryPanel workoutHistoryPanel;
     WorkoutPanel workoutPanel;
-    JScrollPane scrollPane;
-    
     ReloadPanel reloadPanel;
+    EditExerciseListPanel editExerciseListPanel;
+    CreateExercisePanel createExercisePanel;
+    CardioExercisePanel cardioExercisePanel;
+    WeightedExercisePanel weightedExercisePanel;
     File exerciseListData;
     File workoutListData;
 
     public MainPanel(JFrame frame) {
         exerciseListData = new File("data/exerciseListData.json");
         workoutListData = new File("data/workoutListData.json");
+
+        exerciseList = new ExerciseList();
+
         exitPanel = new ExitPanel(frame, this);
         buttonPanel = new HomePanel(frame, this);
+        editExerciseListPanel = new EditExerciseListPanel(this);
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
         workoutPanel = new WorkoutPanel(this);
-        scrollPane = new JScrollPane(workoutHistoryPanel);
-
+        createExercisePanel = new CreateExercisePanel(this);
+        cardioExercisePanel = new CardioExercisePanel(this, exerciseList);
+        weightedExercisePanel = new WeightedExercisePanel(this, exerciseList);
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
 
@@ -68,7 +75,7 @@ public class MainPanel extends JPanel {
         }
     }
 
-     @Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
@@ -110,4 +117,23 @@ public class MainPanel extends JPanel {
         return workoutList;
     }
 
+    public void showEditExerciseListPanel() {
+        add(editExerciseListPanel);
+        editExerciseListPanel.setVisible(true);
+    }
+
+    public void showCreateExercisePanel() {
+        add(createExercisePanel);
+        createExercisePanel.setVisible(true);
+    }
+
+    public void showCardioExercisePanel() {
+        add(cardioExercisePanel);
+        cardioExercisePanel.setVisible(true);
+    }
+
+    public void showWeightedExercisePanel() {
+        add(weightedExercisePanel);
+        weightedExercisePanel.setVisible(true);
+    }
 }
