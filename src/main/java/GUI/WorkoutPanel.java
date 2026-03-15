@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,9 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.CardioExercise;
+import model.Exercise;
 import model.ExerciseList;
+import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
+import model.exceptions.DuplicateExerciseException;
 
 public class WorkoutPanel extends JPanel{
 
@@ -22,9 +27,14 @@ public class WorkoutPanel extends JPanel{
     JTextField nameText = new JTextField(1);
     JButton setNameButton = new JButton();
     String name;
+    Workout workout;
+    MainPanel mainPanel;
+    WorkoutList workoutList;
+    ExerciseList exerciseList;
 
     public WorkoutPanel(MainPanel panel) {
-        Workout workout = new Workout();
+        mainPanel = panel;
+        
         setPreferredSize(new Dimension(500, 500));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY);
@@ -44,7 +54,9 @@ public class WorkoutPanel extends JPanel{
         setVisible(true);
     }
 
-    public void createWorkout(WorkoutList workoutList, ExerciseList exerciseList) {
+    public void createWorkout() {
+        workoutList = mainPanel.getWorkoutList();
+        exerciseList = mainPanel.getExerciseList();
         removeAll();
         repaint();
         revalidate();
@@ -58,47 +70,125 @@ public class WorkoutPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 name = nameText.getText();
+                workout = new Workout(name);
                 remove(setNameButton);
                 remove(nameText);
-                chooseExercise(workoutList, exerciseList);
+                chooseExercise();
             }
         });
         add(setNameButton);
     }
 
-    public void chooseExercise(WorkoutList workoutList, ExerciseList exerciseList) {
+    public void chooseExercise() {
+        ExerciseList el = new ExerciseList();
+        for (Exercise exercise : exerciseList.getExerciseList()) {
+            if (exercise instanceof WeightedExercise weightedExercise) {
+                try {
+                    el.add(new WeightedExercise(exercise.getName(), weightedExercise.getSets(), weightedExercise.getReps(), weightedExercise.getWeight()));
+                } catch (DuplicateExerciseException e) {
+                }
+            } else if (exercise instanceof CardioExercise cardioExercise) {
+                try {
+                    el.add(new CardioExercise(exercise.getName(), cardioExercise.getDistance(), cardioExercise.getTime()));
+                } catch (DuplicateExerciseException e) {
+                }
+            }
+        }
+        exerciseList = el;
         removeAll();
         repaint();
         revalidate();
         add(returnButton);
+        JButton completeWorkout = new JButton("Complete Workout");
         if (exerciseList.size() == 0) {
             add(new JLabel("No Exercise History."));
         } else {
-                for (int i = 0; i < exerciseList.getExerciseList().size(); i++) {
-                    add(createButton(exerciseList.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i, workoutList, exerciseList));
-                    }
+                for (int i = 0; i < el.getExerciseList().size(); i++) {
+                     add(createButton(el.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i));
+                    } 
             }
+
+            completeWorkout.setFont(new Font("Arial", Font.ITALIC, 16));
+            completeWorkout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               workoutList.addWorkout(workout);
+               mainPanel.showButtonPanel();
+            }
+        });
+        add(completeWorkout);
+        
         }
 
 
-    public JButton createButton(String string, Font font, int key, WorkoutList workoutList, ExerciseList exerciseList) {
+     public JButton createButton(String string, Font font, int key) {
         JButton button = new JButton(string);
         button.setFont(font);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                setData(key, workoutList, exerciseList);
+               setData(key);
             }
         });
         return button;
     }
 
-    public void setData(int key, WorkoutList workoutList, ExerciseList exerciseList) {
+    public void setData(int key) {
         removeAll();
         repaint();
         revalidate();
         add(returnButton);
-        add(createLabel(exerciseList.getExerciseList().get(key).getName(), new Font("Arial", Font.BOLD, 24)));
+
+        Exercise exercise = exerciseList.getExerciseList().get(key);
+        add(createLabel(exercise.getName(), new Font("Arial", Font.BOLD, 24)));
+        if(exercise instanceof WeightedExercise weightedExercise) {
+            JTextField reps = new JTextField(1);
+            JTextField sets = new JTextField(1);
+            JTextField weight = new JTextField(1);
+            JButton button = new JButton("Add to " + workout.getName());
+            add(createLabel("Sets (Ex. '3')", new Font("Arial", Font.BOLD, 16)));
+            add(reps);
+            add(createLabel("Reps (Ex. '12')", new Font("Arial", Font.BOLD, 16)));
+            add(sets);
+            add(createLabel("Weight in pounds (Ex. '100')", new Font("Arial", Font.BOLD, 16)));
+            add(weight);
+            button.setFont(new Font("Arial", Font.ITALIC, 16));
+            button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               int repsInt = Integer.parseInt(reps.getText());
+               int setsInt = Integer.parseInt(sets.getText());
+               int weightInt = Integer.parseInt(weight.getText());
+               weightedExercise.setReps(repsInt);
+               weightedExercise.setSets(setsInt);
+               weightedExercise.setWeight(weightInt);
+               workout.addExercise(weightedExercise);
+               chooseExercise();
+            }
+        });
+            add(button);
+        } else if(exercise instanceof CardioExercise cardioExercise) {
+            JTextField distance = new JTextField(1);
+            JTextField time = new JTextField(1);
+            JButton button = new JButton("Add to " + workout.getName());
+            add(createLabel("Time in minutes (Ex. '30')", new Font("Arial", Font.BOLD, 16)));
+            add(distance);
+            add(createLabel("Distance in km (Ex. '5')", new Font("Arial", Font.BOLD, 16)));
+            add(time);
+            button.setFont(new Font("Arial", Font.ITALIC, 16));
+            button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               int timeInt = Integer.parseInt(time.getText());
+               int distanceInt = Integer.parseInt(distance.getText());
+               cardioExercise.setTime(timeInt);
+               cardioExercise.setDistance(distanceInt);
+               workout.addExercise(cardioExercise);
+               chooseExercise();
+            }
+        });
+            add(button);
+        }
     }
 
     public JLabel createLabel(String string, Font font) {

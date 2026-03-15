@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import model.ExerciseList;
 import model.WorkoutList;
@@ -86,20 +87,34 @@ public class MainPanel extends JPanel {
     }
 
     public void showButtonPanel() {
+        removeAll();
+        repaint();
+        revalidate();
         add(buttonPanel);
         buttonPanel.setVisible(true);
     }
 
     public void showWorkoutList() {
+        removeAll();
+        repaint();
+        revalidate();
         add(workoutHistoryPanel);
         workoutHistoryPanel.setVisible(true);
-        workoutHistoryPanel.viewWorkoutList(workoutList);
+        workoutHistoryPanel.viewWorkoutList();
     }
 
     public void showWorkoutName() {
         add(workoutPanel);
         workoutPanel.setVisible(true);
-        workoutPanel.createWorkout(workoutList, exerciseList);
+        workoutPanel.createWorkout();
+    }
+
+    public ExerciseList getExerciseList() {
+        return exerciseList;
+    }
+
+    public WorkoutList getWorkoutList() {
+        return workoutList;
     }
 
     public void showEditExerciseListPanel() {
