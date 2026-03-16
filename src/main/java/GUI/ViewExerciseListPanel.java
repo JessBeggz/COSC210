@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import model.ExerciseList;
 
+//This class represents the ability to view the exercise list
 public class ViewExerciseListPanel extends JPanel {
     JButton returnButton = new JButton();
     
@@ -34,6 +35,8 @@ public class ViewExerciseListPanel extends JPanel {
         });
     }
 
+    // REQUIRES: exerciseList cannot be null
+    // EFFECTS: displays the names of the exercises in the list in this panel
     public void view(ExerciseList exerciseList) {
         removeAll();
         add(returnButton);

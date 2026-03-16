@@ -16,6 +16,7 @@ import model.ExerciseList;
 import model.exceptions.DefaultExerciseRemovalException;
 import model.exceptions.ExerciseNotFoundException;
 
+//This class represents the remove exercise panel where the user can remove an exercise from the list
 public class RemoveExercisePanel extends JPanel {
     JLabel text = new JLabel("Enter the name of the exercise that you wish to remove:", JLabel.CENTER);
     JTextField textBox = new JTextField(10);

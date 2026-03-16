@@ -16,6 +16,7 @@ import model.CardioExercise;
 import model.ExerciseList;
 import model.exceptions.DuplicateExerciseException;
 
+//This class represents the cardio exercise panel where the user can create a cardio exercise and add it to the list
 public class CardioExercisePanel extends JPanel {
     JLabel text = new JLabel("Enter exercise name:", JLabel.CENTER);
     JTextField textBox = new JTextField(10);

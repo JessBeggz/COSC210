@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import model.ExerciseList;
 
+//This class represents the ability to edit the exercise list
 public class EditExerciseListPanel extends JPanel {
     JButton createExercise = new JButton();
     JButton removeExercise = new JButton();

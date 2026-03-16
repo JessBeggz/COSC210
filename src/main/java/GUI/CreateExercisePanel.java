@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//This class represents the create exercise panel where the user can create an exercise
+//First they must choose if its a cardio or weighted exercise
 public class CreateExercisePanel extends JPanel {
     JButton cardio = new JButton();
     JButton weighted = new JButton();

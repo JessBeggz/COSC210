@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//This class represents the reload panel which allows the user to reload previous data or choose not to
 public class ReloadPanel extends JPanel {
     JButton yes = new JButton();
     JButton no = new JButton();

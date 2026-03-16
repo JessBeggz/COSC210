@@ -16,6 +16,7 @@ import model.ExerciseList;
 import model.WeightedExercise;
 import model.exceptions.DuplicateExerciseException;
 
+//This class represents the weighted exercise panel where the user can create a weighted exercise and add it to the list
 public class WeightedExercisePanel extends JPanel {
     JLabel text = new JLabel("Enter exercise name:", JLabel.CENTER);
     JTextField textBox = new JTextField(10);
