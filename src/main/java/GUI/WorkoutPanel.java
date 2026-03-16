@@ -6,10 +6,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.InputMismatchException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -156,7 +159,8 @@ public class WorkoutPanel extends JPanel{
             button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               int repsInt = Integer.parseInt(reps.getText());
+            try {
+                int repsInt = Integer.parseInt(reps.getText());
                int setsInt = Integer.parseInt(sets.getText());
                int weightInt = Integer.parseInt(weight.getText());
                weightedExercise.setReps(repsInt);
@@ -164,6 +168,10 @@ public class WorkoutPanel extends JPanel{
                weightedExercise.setWeight(weightInt);
                workout.addExercise(weightedExercise);
                chooseExercise();
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(WorkoutPanel.this, "Must enter numbers");
+            }
+               
             }
         });
             add(button);
@@ -179,12 +187,18 @@ public class WorkoutPanel extends JPanel{
             button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               int timeInt = Integer.parseInt(time.getText());
+            try {
+                int timeInt = Integer.parseInt(time.getText());
                int distanceInt = Integer.parseInt(distance.getText());
                cardioExercise.setTime(timeInt);
                cardioExercise.setDistance(distanceInt);
                workout.addExercise(cardioExercise);
                chooseExercise();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(WorkoutPanel.this, "Must enter numbers");
+
+            }
+               
             }
         });
             add(button);
