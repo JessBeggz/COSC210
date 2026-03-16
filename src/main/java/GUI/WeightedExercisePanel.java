@@ -22,7 +22,7 @@ public class WeightedExercisePanel extends JPanel {
     JTextField textBox = new JTextField(10);
     JButton submit = new JButton();
 
-    public WeightedExercisePanel(MainPanel mainPanel, ExerciseList list) {
+    public WeightedExercisePanel(MainPanel mainPanel) {
         text.setFont(new Font("Arial", Font.ITALIC, 18));
         add(text);
 
@@ -38,6 +38,7 @@ public class WeightedExercisePanel extends JPanel {
                 setVisible(false);
                 String exerciseName = textBox.getText();
                 WeightedExercise w = new WeightedExercise(exerciseName);
+                ExerciseList list = mainPanel.getExerciseList();
                 try {
                     list.add(w);
                     JOptionPane.showMessageDialog(WeightedExercisePanel.this, "Exercise was successfully added!");

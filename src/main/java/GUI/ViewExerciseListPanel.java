@@ -17,7 +17,7 @@ import model.ExerciseList;
 public class ViewExerciseListPanel extends JPanel {
     JButton returnButton = new JButton();
     
-    public ViewExerciseListPanel(MainPanel mainPanel, ExerciseList list) {
+    public ViewExerciseListPanel(MainPanel mainPanel) {
         setPreferredSize(new Dimension(500, 500));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY);

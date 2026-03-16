@@ -22,7 +22,7 @@ public class RemoveExercisePanel extends JPanel {
     JTextField textBox = new JTextField(10);
     JButton submit = new JButton();
 
-    public RemoveExercisePanel(MainPanel mainPanel, ExerciseList list) {
+    public RemoveExercisePanel(MainPanel mainPanel) {
         text.setFont(new Font("Arial", Font.ITALIC, 18));
         add(text);
 
@@ -37,6 +37,7 @@ public class RemoveExercisePanel extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
                 String exerciseName = textBox.getText();
+                ExerciseList list = mainPanel.getExerciseList();
                 try {
                     list.removeExercise(exerciseName);
                     JOptionPane.showMessageDialog(RemoveExercisePanel.this, "Exercise was successfully removed!");

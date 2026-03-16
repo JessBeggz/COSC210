@@ -51,10 +51,10 @@ public class MainPanel extends JPanel {
         workoutHistoryPanel = new WorkoutHistoryPanel(this);
         workoutPanel = new WorkoutPanel(this);
         createExercisePanel = new CreateExercisePanel(this);
-        cardioExercisePanel = new CardioExercisePanel(this, exerciseList);
-        weightedExercisePanel = new WeightedExercisePanel(this, exerciseList);
-        removeExercisePanel = new RemoveExercisePanel(this, exerciseList);
-        viewExerciseListPanel = new ViewExerciseListPanel(this, exerciseList);
+        cardioExercisePanel = new CardioExercisePanel(this); //* */
+        weightedExercisePanel = new WeightedExercisePanel(this); //* */
+        removeExercisePanel = new RemoveExercisePanel(this); //* */
+        viewExerciseListPanel = new ViewExerciseListPanel(this); //* */
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
     }
