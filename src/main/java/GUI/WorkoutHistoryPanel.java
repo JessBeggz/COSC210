@@ -17,6 +17,9 @@ import model.WeightedExercise;
 import model.Workout;
 import model.WorkoutList;
 
+
+//This class represents the workout history panel that shows the user any previous workouts
+// that were either previously completed and saved during this session or loaded from previous data
 public class WorkoutHistoryPanel extends JPanel {
 
     JButton returnButton = new JButton();
@@ -45,7 +48,7 @@ public class WorkoutHistoryPanel extends JPanel {
     }
 
     // REQUIRES: workoutList can't be null
-    // EFFECTS: prints the contents of workoutlist in the terminal
+    // EFFECTS: prints the contents of workoutlist
     public void viewWorkoutList() {
         removeAll();
         workoutList = mainPanel.getWorkoutList();

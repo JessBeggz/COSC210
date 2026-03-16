@@ -13,6 +13,8 @@ import model.ExerciseList;
 import model.WorkoutList;
 import persistence.JsonReader;
 
+//This class is represents the main panel of our workout tracker gui.
+// It finds any previous data and is the display of all the other panels
 public class MainPanel extends JPanel {
 
     private HomePanel buttonPanel;
@@ -35,6 +37,10 @@ public class MainPanel extends JPanel {
     File exerciseListData;
     File workoutListData;
 
+
+    //REQUIRES:
+    //MODIFIES: this
+    //EFFECTS: loads any previous data and creates all our panels
     public MainPanel(JFrame frame) {
         exerciseListData = new File("data/exerciseListData.json");
         workoutListData = new File("data/workoutListData.json");

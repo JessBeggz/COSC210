@@ -21,6 +21,7 @@ import model.Workout;
 import model.WorkoutList;
 import model.exceptions.DuplicateExerciseException;
 
+//This class represents the workout panel that allows the user to create their workouts
 public class WorkoutPanel extends JPanel{
 
     JButton returnButton = new JButton();
@@ -107,13 +108,12 @@ public class WorkoutPanel extends JPanel{
                      add(createButton(el.getExerciseList().get(i).getName(), new Font("Arial", Font.ITALIC, 16), i));
                     } 
             }
-
+            
             completeWorkout.setFont(new Font("Arial", Font.ITALIC, 16));
             completeWorkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               workoutList.addWorkout(workout);
-               mainPanel.showButtonPanel();
+               addWorkout(workout);
             }
         });
         add(completeWorkout);
@@ -195,5 +195,31 @@ public class WorkoutPanel extends JPanel{
         JLabel label = new JLabel(string);
         label.setFont(font);
         return label;
+    }
+
+    public void addWorkout(Workout workout) {
+        removeAll();
+        repaint();
+        revalidate();
+        JButton yesButton = new JButton("Yes");
+        JButton noButton = new JButton("No");
+        add(createLabel("Would you like to save this workout", new Font("Arial", Font.BOLD, 16)));
+        yesButton.setFont(new Font("Arial", Font.ITALIC, 16));
+        yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               workoutList.addWorkout(workout);
+               mainPanel.showButtonPanel();
+            }
+        });
+            add(yesButton);
+        noButton.setFont(new Font("Arial", Font.ITALIC, 16));
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               mainPanel.showButtonPanel();
+            }
+        });
+            add(noButton);
     }
 }

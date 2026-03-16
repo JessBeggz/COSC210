@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+//This class represents that home panel that is the home page gui for our user using our workout tracker
 public class HomePanel extends JPanel{
 
     JButton beginWorkout = new JButton();
