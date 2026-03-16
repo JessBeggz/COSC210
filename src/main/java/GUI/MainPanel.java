@@ -37,26 +37,13 @@ public class MainPanel extends JPanel {
     File exerciseListData;
     File workoutListData;
 
-
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: loads any previous data and creates all our panels
     public MainPanel(JFrame frame) {
-        exerciseListData = new File("data/exerciseListData.json");
-        workoutListData = new File("data/workoutListData.json");
-
-        try {
-            JsonReader workoutListReader = new JsonReader("./data/workoutListData.json");
-            workoutList = workoutListReader.readWorkoutList();
-
-            JsonReader exerciseListReader = new JsonReader("./data/exerciseListData.json");
-            exerciseList = exerciseListReader.readExerciseList();
-            // add(new JLabel("Previous data found!"));
-        } catch (IOException e) {
-            workoutList = new WorkoutList();
-            exerciseList = new ExerciseList();
-            // add(new JLabel("No previous data found."));
-        }
+        reloadPanel = new ReloadPanel(frame, this);
+        add(reloadPanel);
+        setVisible(true);
 
         exitPanel = new ExitPanel(frame, this);
         buttonPanel = new HomePanel(frame, this);
@@ -70,16 +57,6 @@ public class MainPanel extends JPanel {
         viewExerciseListPanel = new ViewExerciseListPanel(this, exerciseList);
 
         backgroundImage = new ImageIcon(getClass().getResource("background1.jpg")).getImage();
-
-        reloadPanel = new ReloadPanel(frame, this);
-
-        if(!exerciseListData.exists() && !workoutListData.exists()) {
-            add(buttonPanel);
-            setVisible(true);
-        } else {
-            add(reloadPanel);
-            setVisible(true);
-        }
     }
 
     @Override
@@ -153,5 +130,41 @@ public class MainPanel extends JPanel {
         add(viewExerciseListPanel);
         viewExerciseListPanel.setVisible(true);
         viewExerciseListPanel.view(exerciseList);
+    }
+
+    public void reloadData(boolean reload) {
+        if (reload) {
+            exerciseListData = new File("data/exerciseListData.json");
+            workoutListData = new File("data/workoutListData.json");
+
+            try {
+                JsonReader workoutListReader = new JsonReader("./data/workoutListData.json");
+                workoutList = workoutListReader.readWorkoutList();
+
+                JsonReader exerciseListReader = new JsonReader("./data/exerciseListData.json");
+                exerciseList = exerciseListReader.readExerciseList();
+                // add(new JLabel("Previous data found!"));
+            } catch (IOException e) {
+                workoutList = new WorkoutList();
+                exerciseList = new ExerciseList();
+                // add(new JLabel("No previous data found."));
+            }
+        } else {
+            exerciseListData = new File("data/exerciseListDefaultData.json");
+            workoutListData = new File("data/workoutListDefaultData.json");
+            System.out.println("HI");
+            try {
+                JsonReader workoutListReader = new JsonReader("./data/workoutListDefaultData.json");
+                workoutList = workoutListReader.readWorkoutList();
+
+                JsonReader exerciseListReader = new JsonReader("./data/exerciseListDefaultData.json");
+                exerciseList = exerciseListReader.readExerciseList();
+                // add(new JLabel("Previous data found!"));
+            } catch (IOException e) {
+                workoutList = new WorkoutList();
+                exerciseList = new ExerciseList();
+                // add(new JLabel("No previous data found."));
+            }
+        }
     }
 }
