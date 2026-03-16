@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,8 +17,6 @@ public class ReloadPanel extends JPanel {
     JButton yes = new JButton();
     JButton no = new JButton();
     JLabel text = new JLabel("Do you wish to reload previous data?", JLabel.CENTER);
-    File exerciseListData = new File("data/exerciseListData.json");
-    File workoutListData = new File("data/workoutListData.json");
 
     public ReloadPanel(JFrame frame, MainPanel mainPanel) {
         setLayout(new GridLayout(5,1));
@@ -35,6 +32,7 @@ public class ReloadPanel extends JPanel {
         yes.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+                mainPanel.reloadData(true);
                 setVisible(false);
                 mainPanel.showButtonPanel();
 			}
@@ -48,15 +46,12 @@ public class ReloadPanel extends JPanel {
         no.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-                
-                exerciseListData.delete();
-                workoutListData.delete();
+                mainPanel.reloadData(false);
                 setVisible(false);
                 mainPanel.showButtonPanel();
 			}
 		});
         add(no);
     }
-
 }
 
