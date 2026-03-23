@@ -33,7 +33,7 @@ public class EventLogTest {
 	}
 	
 	@Test
-	public void testLogEvent() {	
+	public void testLogEvent() {
 		List<Event> l = new ArrayList<Event>();
 		
 		EventLog el = EventLog.getInstance();

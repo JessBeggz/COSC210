@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Event;
+import model.EventLog;
 import persistence.JsonWriter;
 
 
@@ -49,6 +51,9 @@ public class ExitPanel extends JPanel {
                     workoutWriter.write(mainPanel.getWorkoutList());
                     workoutWriter.closeWriter();
                     frame.dispose();
+                    for (Event event : EventLog.getInstance()) {
+                        System.out.println(event);
+                    }
                 } catch (IOException ex) {
                     add(new JLabel("Failed to save data... "));
                 }
@@ -64,6 +69,9 @@ public class ExitPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.dispose();
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event);
+                }
             }
         });
         add(exit);

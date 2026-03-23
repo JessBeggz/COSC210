@@ -22,6 +22,7 @@ public class ExerciseList {
     private WeightedExercise legCurls = new WeightedExercise("Leg Curls");
     private WeightedExercise latPulldown = new WeightedExercise("Lat Pulldown");
     private CardioExercise run = new CardioExercise("Run", 0, 0);
+    private Event eventAdd = new Event("Exercise added to ExerciseList!");
 
     public ExerciseList() {
         list = new ArrayList<>();
@@ -58,7 +59,6 @@ public class ExerciseList {
             }
         }
         list.add(e);
-        Event eventAdd = new Event("Exercise added to ExerciseList!");
         EventLog.getInstance().logEvent(eventAdd);
     }
 
