@@ -58,6 +58,8 @@ public class ExerciseList {
             }
         }
         list.add(e);
+        Event eventAdd = new Event("Exercise added to ExerciseList!");
+        EventLog.getInstance().logEvent(eventAdd);
     }
 
     // REQUIRES: e cannot be null
@@ -76,13 +78,13 @@ public class ExerciseList {
                     throw new DefaultExerciseRemovalException("This exercise cannot be removed as it is a default exercise.");
                 } else {
                     list.remove(i);
-                    //System.out.println("Exercise successfully removed");
+                    Event eventRemove = new Event("Exercise removed from ExerciseList!");
+                    EventLog.getInstance().logEvent(eventRemove);
                 }
                 return;
             }
         }
         throw new ExerciseNotFoundException("No exercise was found with that name!");
-        //System.out.println("No exercise found with that name.");
     }
 
     // REQUIRES: e cannot be null
