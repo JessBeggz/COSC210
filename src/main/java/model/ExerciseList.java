@@ -23,6 +23,7 @@ public class ExerciseList {
     private WeightedExercise latPulldown = new WeightedExercise("Lat Pulldown");
     private CardioExercise run = new CardioExercise("Run", 0, 0);
     private Event eventAdd = new Event("Exercise added to ExerciseList!");
+    private Event eventRemove = new Event("Exercise removed from ExerciseList!");
 
     public ExerciseList() {
         list = new ArrayList<>();
@@ -78,7 +79,6 @@ public class ExerciseList {
                     throw new DefaultExerciseRemovalException("This exercise cannot be removed as it is a default exercise.");
                 } else {
                     list.remove(i);
-                    Event eventRemove = new Event("Exercise removed from ExerciseList!");
                     EventLog.getInstance().logEvent(eventRemove);
                 }
                 return;
