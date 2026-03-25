@@ -9,6 +9,7 @@ import org.json.JSONObject;
 public class WorkoutList {
 
     private ArrayList<Workout> workoutList;
+    private Event eventAdd = new Event("Workout added to WorkoutList!");
 
     public WorkoutList() {
         workoutList = new ArrayList<>();
@@ -19,6 +20,7 @@ public class WorkoutList {
     // EFFECTS: adds created exercise to WorkoutList
     public void addWorkout(Workout workout) {
         workoutList.add(workout);
+        EventLog.getInstance().logEvent(eventAdd);
     }
 
     //EFFECTS: returns the WorkoutList

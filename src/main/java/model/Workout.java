@@ -8,6 +8,10 @@ import org.json.JSONObject;
 public class Workout {
     private String name;
     private final ArrayList<Exercise> workoutExercises;
+    private Event eventStart = new Event("Workout started!");
+    private Event eventAddExercise = new Event("Exercise added to workout!");
+
+
 
     // Default Constructor
     public Workout() {
@@ -16,6 +20,7 @@ public class Workout {
     }
 
     public Workout(String name) {
+        EventLog.getInstance().logEvent(eventStart);
         this.name = name;
         workoutExercises = new ArrayList<>();
     }
@@ -47,6 +52,8 @@ public class Workout {
             }
         }
         workoutExercises.add(e);
+        EventLog.getInstance().logEvent(eventAddExercise);
+
     }
     
 
