@@ -152,7 +152,6 @@ public class MainPanel extends JPanel {
         } else {
             exerciseListData = new File("data/exerciseListDefaultData.json");
             workoutListData = new File("data/workoutListDefaultData.json");
-            System.out.println("HI");
             try {
                 JsonReader workoutListReader = new JsonReader("./data/workoutListDefaultData.json");
                 workoutList = workoutListReader.readWorkoutList();
