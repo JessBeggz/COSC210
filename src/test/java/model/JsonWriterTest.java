@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,11 +66,16 @@ public class JsonWriterTest {
             assertEquals("Upper", wl.getWorkoutList().get(0).getName());
             assertEquals("Jumping Jacks", wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getName());
             assertEquals("Skipping", wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getName());
-            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getSets());
-            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getReps());
-            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(0).getWeight());
-            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getTime());
-            assertEquals(0, wl.getWorkoutList().get(0).getWorkoutExercises().get(1).getDistance());
+            if(wl.getWorkoutList().get(0).getWorkoutExercises().get(0) instanceof WeightedExercise weightedExercise) {
+                 assertEquals(0, weightedExercise.getSets());
+                 assertEquals(0, weightedExercise.getReps());
+                 assertEquals(0, weightedExercise.getWeight());
+            } else fail();
+           if(wl.getWorkoutList().get(0).getWorkoutExercises().get(1)instanceof CardioExercise cardioExercise) {
+            cardioExercise.getTime();
+            cardioExercise.getDistance();
+           } else fail();
+            
         } catch (IOException ex) {
             System.out.println("Error occurred!");
             ex.printStackTrace();
