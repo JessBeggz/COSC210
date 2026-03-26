@@ -48,3 +48,13 @@ User Stories for Denton Manders
 - You can reload the state of my application by running the application and clicking the "Yes" button.
 
 # Phase 4: Task 2
+Wed Mar 25 17:35:29 PDT 2026
+Workout started!
+Wed Mar 25 17:35:29 PDT 2026
+Exercise added to workout!
+Wed Mar 25 17:35:19 PDT 2026
+Workout added to WorkoutList!
+Wed Mar 25 17:35:19 PDT 2026
+Exercise added to ExerciseList!
+Wed Mar 25 17:35:19 PDT 2026
+Exercise removed from ExerciseList!
