@@ -58,3 +58,6 @@ Wed Mar 25 17:35:19 PDT 2026
 Exercise added to ExerciseList!
 Wed Mar 25 17:35:19 PDT 2026
 Exercise removed from ExerciseList!
+
+# Phase 4: Task 3
+Reflecting on our UML design, we would refactor the GUI. In particular, we would make the WorkoutHistoryPanel and the WorkoutPanel not dependent on MainPanel, ExerciseList, and other model classes. Right now, our application has high coupling as our GUI depends on many of our model classes. This high coupling makes our application hard to modify.
